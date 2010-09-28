@@ -21,7 +21,7 @@
   </form>
 <script type="text/javascript">
 var gjPageFormConfig = {
-  url:'<?php echo url_for('@gj_page_add_design_element?id=0&num=0'); ?>'
+  url:'<?php echo url_for('@gj_page_add_design_element?pageid=0&name=xxx&num=0'); ?>'
 }
 </script>
 </div>

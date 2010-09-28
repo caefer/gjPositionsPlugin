@@ -18,10 +18,14 @@ class BasegjPageAdminActions extends autoGjPageAdminActions
     //$this->forward404unless($request->isXmlHttpRequest());
 
     $number = intval($request->getParameter("num"));
-    $page   = Doctrine_Core::getTable('gjPage')->find($request->getParameter('id'));
+    $name   = $request->getParameter("name");
+    $page   = Doctrine_Core::getTable('gjPage')->find($request->getParameter('pageid'));
 
     $form = new gjPageForm($page);
-    $form->addDesignElement($number);
+    $designElement = new gjDesignElement();
+    $designElement->Page = $form->getObject();
+    $designElement->name = $name;
+    $form->addDesignElement($number, $designElement);
 
     return $this->renderPartial('addDesignElement', array('form' => $form, 'num' => $number));
   }

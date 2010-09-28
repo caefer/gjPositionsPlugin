@@ -1,3 +1,11 @@
 gjPage:
   columns:
     title:      string(255)
+  relations:
+    DesignElements:
+      class:        gjDesignElement
+      local:        id
+      foreign:      gj_page_id
+      foreignAlias: Page
+      type:         many
+      orderBy:      position

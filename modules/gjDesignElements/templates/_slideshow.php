@@ -1,1 +1,3 @@
-<div><?php echo basename(__FILE__); ?></div>
+<div class="slideshow">
+  <?php echo basename(__FILE__); ?>
+</div>

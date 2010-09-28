@@ -1,1 +1,1 @@
-    <li><?php echo $num; ?> <?php echo $form['designElements'][$num]; ?></li>
+<li><?php echo $form['designElements'][$num]; ?></li>
