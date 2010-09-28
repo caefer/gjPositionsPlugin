@@ -4,7 +4,7 @@ gjPageForm = {
     page_id:'input#gj_page_id',
     button_add:'button#add_design_element',
     source_list:'ul#design_element_source_list',
-    target_list:'ul#design_element_target_list'
+    target_list:'#design_element_target_list ol'
   },
   addDesignElement:function(listItem)
   {
@@ -26,18 +26,28 @@ gjPageForm = {
   },
   initDragnDrop:function()
   {
-    jQuery(gjPageForm._selectors.target_list).sortable({
-      connectWith: gjPageForm._selectors.target_list,
-      helper: 'clone',
-      receive:function(event,ui){gjPageForm.addDesignElement(ui.item);},
+    // slightly modified version of the shopping cart demo
+    // @see http://jqueryui.com/demos/droppable/#shopping-cart
+    jQuery(gjPageForm._selectors.source_list+" li").draggable({
+      connectToSortable: gjPageForm._selectors.target_list,
+      helper: "clone"
+    });
+
+    jQuery(gjPageForm._selectors.target_list).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+        jQuery( this ).find( ".placeholder" ).remove();
+      }
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        jQuery( this ).removeClass( "ui-state-default" );
+      },
+      receive:function(event,ui){gjPageForm.addDesignElement(jQuery(this).find('li.ui-draggable'));},
       update:gjPageForm.updatePositions
     });
-    jQuery(gjPageForm._selectors.source_list).sortable({
-      connectWith: gjPageForm._selectors.target_list,
-      helper: 'clone',
-      revert: true
-    });
-    jQuery(gjPageForm._selectors.target_list+','+gjPageForm._selectors.source_list).disableSelection();
   },
   init:function()
   {

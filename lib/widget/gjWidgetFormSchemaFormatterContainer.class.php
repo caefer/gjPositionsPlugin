@@ -22,5 +22,5 @@ class gjWidgetFormSchemaFormatterContainer extends sfWidgetFormSchemaFormatterLi
     $rowFormat       = "<li>\n  %error%\n  %field%%help%\n%hidden_fields%</li>\n",
     $errorRowFormat  = "<li>\n%errors%</li>\n",
     $helpFormat      = '<br />%help%',
-    $decoratorFormat = "<ul id=\"design_element_target_list\" class=\"interaction\">\n  %content%</ul>";
+    $decoratorFormat = '<div id="design_element_target_list"><ol>%content%</ol></div>';
 }
