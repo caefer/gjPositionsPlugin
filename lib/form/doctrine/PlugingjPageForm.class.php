@@ -25,23 +25,40 @@ abstract class PlugingjPageForm extends BasegjPageForm
       $designElements = array($designElement);
     }
 
-    $designElementForms = new sfForm();
-    foreach($designElements as $i => $designElement)
+    $designElementFormHolder = new sfForm();
+    $decorator = new gjWidgetFormSchemaFormatterContainer($designElementFormHolder->getWidgetSchema());
+    $designElementFormHolder->getWidgetSchema()->addFormFormatter('container', $decorator);
+    $designElementFormHolder->getWidgetSchema()->setFormFormatterName('container');
+    $this->embedForm('designElements', $designElementFormHolder);
+
+    foreach($designElements as $num => $designElement)
     {
-      $designElementForm = new gjDesignElementForm($designElement);
-      $designElementForms->embedForm($i, $designElementForm);
+      $this->addDesignElement($num, $designElement);
     }
-    $this->embedForm('designElements', $designElementForms);
   }
 
-  public function addDesignElement($num)
+  public function addDesignElement($num, $designElement = false)
   {
-    $designElement = new gjDesignElement();
-    $designElement->Page = $this->getObject();
-    $designElementForm = new gjDesignElementForm($designElement);
+    if(false === $designElement)
+    {
+      $designElement = new gjDesignElement();
+      $designElement->Page = $this->getObject();
+    }
+
+    $designElementForm = $this->getDesignElementForm($designElement);
 
     $this->embeddedForms['designElements']->embedForm($num, $designElementForm);
     $this->embedForm('designElements', $this->embeddedForms['designElements']);
+  }
+
+  protected function getDesignElementForm($designElement)
+  {
+    $designElementForm = new gjDesignElementForm($designElement);
+    $decorator = new gjWidgetFormSchemaFormatterPartial($designElementForm->getWidgetSchema());
+    $designElementForm->getWidgetSchema()->addFormFormatter('partial', $decorator);
+    $designElementForm->getWidgetSchema()->setFormFormatterName('partial');
+
+    return $designElementForm;
   }
 
   public function bind(array $taintedValues = null, array $taintedFiles = null)
@@ -50,7 +67,6 @@ abstract class PlugingjPageForm extends BasegjPageForm
     {
       if(!isset($this['designElements'][$key]))
       {
-        sfContext::getInstance()->getLogger()->info('Add designElement gj_design_element '.$key);
         $this->addDesignElement($key);
       }
     }
@@ -61,6 +77,7 @@ abstract class PlugingjPageForm extends BasegjPageForm
   public function getJavascripts()
   {
     $javascripts = parent::getJavascripts();
+    $javascripts[] = '/gjPositionsPlugin/js/jquery-ui-1.8.5.custom.min.js';
     $javascripts[] = '/gjPositionsPlugin/js/page.js';
     return $javascripts;
   }

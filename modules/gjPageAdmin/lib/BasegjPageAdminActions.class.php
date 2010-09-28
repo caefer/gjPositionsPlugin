@@ -15,7 +15,7 @@ class BasegjPageAdminActions extends autoGjPageAdminActions
 {
   public function executeAddDesignElement(sfWebRequest $request)
   {
-    $this->forward404unless($request->isXmlHttpRequest());
+    //$this->forward404unless($request->isXmlHttpRequest());
 
     $number = intval($request->getParameter("num"));
     $page   = Doctrine_Core::getTable('gjPage')->find($request->getParameter('id'));

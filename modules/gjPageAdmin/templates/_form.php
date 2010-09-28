@@ -28,11 +28,12 @@ var gjPageFormConfig = {
     </td>
     <td>
 <div class="sf_admin_form">
-  <ul>
+  <ul id="design_element_source_list" class="interaction">
 <?php foreach(sfConfig::get('app_gjPositionsPlugin_partials', array()) as $name => $partial): ?>
     <li><?php include_partial('gjDesignElements/'.$name); ?></li>
 <?php endforeach; ?>
   </ul>
+  <br clear="both" />
 </div>
     </td>
   </tr>

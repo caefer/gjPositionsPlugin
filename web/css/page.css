@@ -1,1 +1,24 @@
 
+#design_element_source_list,
+#design_element_target_list
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-right: 10px;
+  background: #eee;
+  padding: 5px;
+  width: 143px;
+}
+
+#design_element_source_list li,
+#design_element_target_list li
+{
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  width: 120px;
+  display: block;
+  border: 1px solid red;
+}

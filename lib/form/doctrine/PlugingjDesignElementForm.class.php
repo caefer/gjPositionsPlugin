@@ -14,6 +14,9 @@ abstract class PlugingjDesignElementForm extends BasegjDesignElementForm
   {
     parent::setup();
 
-    unset($this['position'], $this['gj_page_id']);
+    $this->widgetSchema['position'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['name'] = new gjWidgetFormInputHiddenWithPartial();
+
+    unset($this['gj_page_id']);
   }
 }
