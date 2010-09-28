@@ -1,0 +1,8 @@
+all:
+  gjPositionsPlugin:
+    partials:
+      top_teaser:         teaser/top
+      medium_teaser:      teaser/medium
+      small_teaser:       teaser/small
+      two_column_teaser:  teaser/twoColumn
+      slideshow:          [slideshow,show]
