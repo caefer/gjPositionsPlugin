@@ -1,0 +1,9 @@
+gjDesignElement:
+  columns:
+    name:           string(24)
+    position:       integer
+    gj_page_id:     integer
+  relations:
+    Page:
+      class:        gjPage
+      foreignAlias: DesignElements

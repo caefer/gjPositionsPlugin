@@ -1,0 +1,11 @@
+gjContentElement:
+  actAs:
+    Doctrine_Template_LooselyCoupleable: ~
+  columns:
+    position:       integer
+    gj_design_element_id: integer
+  relations:
+    DesignElement:
+      class:        gjDesignElement
+      foreignAlias: Contents
+

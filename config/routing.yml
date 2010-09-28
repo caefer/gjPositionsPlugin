@@ -1,0 +1,3 @@
+gj_page_add_design_element:
+  url:   /gjPageAdmin/addDesignElement/:id/:num
+  param: { module: gjPageAdmin, action: addDesignElement }
