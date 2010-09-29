@@ -23,4 +23,16 @@ class gjWidgetFormSchemaFormatterContainer extends sfWidgetFormSchemaFormatterLi
     $errorRowFormat  = "<li>\n%errors%</li>\n",
     $helpFormat      = '<br />%help%',
     $decoratorFormat = '<div id="design_element_target_list"><ol>%content%</ol></div>';
+
+  public function formatRow($label, $field, $errors = array(), $help = '', $hiddenFields = null)
+  {
+    preg_match('/\[name\].*value="([\w_]+)"/m', $field, $matches);
+    if(2 == count($matches))
+    {
+      sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
+      $elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
+      $field = get_partial('gjPageAdmin/designElement', array('name' => $matches[1], 'partial' => $elements[$matches[1]])) . $field;
+    }
+    return parent::formatRow($label, $field, $errors, $help, $hiddenFields);
+  }
 }

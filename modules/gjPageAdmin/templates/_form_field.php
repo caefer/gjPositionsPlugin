@@ -10,7 +10,6 @@
 
       <div class="content">
         <?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?>
-        <div id="extra<?php echo $name; ?>"></div>
       </div>
 
       <?php if ($help): ?>
