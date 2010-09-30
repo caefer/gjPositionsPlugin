@@ -2,8 +2,14 @@ gjPageForm = {
   count:0,
   _selectors:{
     page_id:'input#gj_page_id',
-    source_list:'ul#design_element_source_list',
-    target_list:'#design_element_target_list ol'
+    source_list:'#design_element_source_list',
+    target_list:'#design_element_target_list ol',
+    elementTogglers:'.design-elements-head a'
+  },
+  receiveElement:function(event, ui)
+  {
+    jQuery( this ).find( ".placeholder" ).remove();
+    ui.draggable.children('.design-element-include').slideDown();
   },
   updatePositions:function()
   {
@@ -30,9 +36,7 @@ gjPageForm = {
       activeClass: "ui-state-default",
       hoverClass: "ui-state-hover",
       accept: ":not(.ui-sortable-helper)",
-      drop: function( event, ui ) {
-        jQuery( this ).find( ".placeholder" ).remove();
-      }
+      drop: gjPageForm.receiveElement
     }).sortable({
       items: "li:not(.placeholder)",
       sort: function() {
@@ -41,10 +45,22 @@ gjPageForm = {
       update:gjPageForm.updatePositions
     });
   },
+  initDesignElements:function()
+  {
+    jQuery(gjPageForm._selectors.elementTogglers).click(gjPageForm.toggleDesignElement);
+  },
+  toggleDesignElement:function()
+  {
+    src = jQuery(this).children('img').attr('src');
+    src = src.match(/more/) ? src.replace(/more/, 'less') : src.replace(/less/, 'more');
+    jQuery(this).children('img').attr('src', src);
+    jQuery(this).parent().next('.design-element-include').slideToggle();
+  },
   init:function()
   {
     gjPageForm.count = jQuery(gjPageForm._selectors.target_list+' > li').length;
     gjPageForm.initDragnDrop();
+    gjPageForm.initDesignElements();
   }
 }
 

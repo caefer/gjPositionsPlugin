@@ -40,3 +40,5 @@ float:left;
   border: 1px solid gray;
 }
 
+.design-elements-head a { float:right; }
+.design-elements-head strong { clear:right; }
