@@ -17,7 +17,7 @@
   </form>
 </div>
 <div class="sf_admin_form" id="gj_page_admin_design_elements">
-  <?php include_component('gjPageAdmin', 'designElements', array('page' => $gj_page)); ?>
+  <?php include_component('gjDesignElements', 'list', array('page' => $gj_page)); ?>
 </div>
 <div class="sf_admin_form" id="gj_page_admin_content_elements">
 contents

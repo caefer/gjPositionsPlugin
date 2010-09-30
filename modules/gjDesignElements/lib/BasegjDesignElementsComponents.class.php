@@ -1,17 +1,13 @@
 <?php
 
-class BasegjPageAdminComponents extends sfComponents
+abstract class BasegjDesignElementsComponents extends sfComponents
 {
-  public function executeDesignElements(sfWebRequest $request)
+  public function executeList(sfWebRequest $request)
   {
     $this->elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
-
-    $designElement = new gjDesignElement();
-    $designElement->name = 'topTeaser';
-    $designElement->Page = $this->page;
   }
 
-  public function executeDesignElement(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
