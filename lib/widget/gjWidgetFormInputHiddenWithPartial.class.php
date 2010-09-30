@@ -23,7 +23,7 @@ class gjWidgetFormInputHiddenWithPartial extends sfWidgetFormInputHidden
     $html = parent::render($name, $value, $attributes, $errors);
     sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
     $elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
-    $html .= get_partial('gjPageAdmin/designElement', array('name' => $value, 'partial' => $elements[$value]));
+    $html .= get_partial('gjDesignElements/show', array('name' => $value, 'partial' => $elements[$value]));
     return $html;
   }
 }

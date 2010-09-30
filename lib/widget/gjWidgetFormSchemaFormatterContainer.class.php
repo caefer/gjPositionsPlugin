@@ -31,7 +31,7 @@ class gjWidgetFormSchemaFormatterContainer extends sfWidgetFormSchemaFormatterLi
     {
       sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
       $elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
-      $field = get_partial('gjPageAdmin/designElement', array('name' => $matches[1], 'partial' => $elements[$matches[1]])) . $field;
+      $field = get_partial('gjDesignElements/show', array('name' => $matches[1], 'partial' => $elements[$matches[1]])) . $field;
     }
     return parent::formatRow($label, $field, $errors, $help, $hiddenFields);
   }

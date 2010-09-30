@@ -15,15 +15,10 @@ abstract class PlugingjDesignElementForm extends BasegjDesignElementForm
     parent::setup();
 
     $this->widgetSchema['position'] = new sfWidgetFormInputHidden();
-    $this->widgetSchema['name'] = new sfWidgetFormInputHidden();
-    //$this->widgetSchema['name'] = new gjWidgetFormInputHiddenWithPartial();
-    /*
-    sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
-    $elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
-    return $html . get_partial('gjPageAdmin/designElement', array('name' => $value, 'partial' => $elements[$value]));
-    */
+    $this->widgetSchema['name']     = new sfWidgetFormInputHidden();
 
     $this->disableCSRFProtection();
+
     unset($this['gj_page_id']);
   }
 }
