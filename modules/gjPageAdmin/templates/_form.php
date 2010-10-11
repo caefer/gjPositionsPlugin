@@ -20,6 +20,6 @@
   <?php include_component('gjDesignElements', 'list', array('page' => $gj_page)); ?>
 </div>
 <div class="sf_admin_form" id="gj_page_admin_content_elements">
-contents
+  <?php include_component('gjContentElements', 'list', array('page' => $gj_page)); ?>
 </div>
 <div style="clear:both;"></div>

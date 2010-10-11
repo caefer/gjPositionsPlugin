@@ -1,2 +1,2 @@
 all:
-  enabled_modules: [homepage, gjDesignElements]
+  enabled_modules: [homepage, gjDesignElements, gjContentElements]

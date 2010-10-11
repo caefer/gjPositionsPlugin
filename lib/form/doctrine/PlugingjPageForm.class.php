@@ -27,6 +27,8 @@ abstract class PlugingjPageForm extends BasegjPageForm
 
     $designElementFormHolder = new sfForm();
     $decorator = new gjWidgetFormSchemaFormatterContainer($designElementFormHolder->getWidgetSchema());
+    $decorator->setPartial('gjDesignElements/show');
+    $decorator->setListId('design_element_target_list');
     $designElementFormHolder->getWidgetSchema()->addFormFormatter('container', $decorator);
     $designElementFormHolder->getWidgetSchema()->setFormFormatterName('container');
     $this->embedForm('designElements', $designElementFormHolder);
