@@ -9,6 +9,7 @@
 #gj_page_admin_content_elements
 {
   display:table-cell;
+  vertical-align: top;
 }
 
 #gj_page_admin_page

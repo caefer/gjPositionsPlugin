@@ -14,9 +14,9 @@ abstract class PlugingjContentElementForm extends BasegjContentElementForm
   {
     parent::setup();
 
-    $this->widgetSchema['position'] = new sfWidgetFormInputHidden();
-    $this->widgetSchema['obj_type'] = new sfWidgetFormInputHidden();
-    $this->widgetSchema['obj_pk']   = new sfWidgetFormInputHidden();
+    //$this->widgetSchema['position'] = new sfWidgetFormInputHidden();
+    //$this->widgetSchema['obj_type'] = new sfWidgetFormInputHidden();
+    //$this->widgetSchema['obj_pk']   = new sfWidgetFormInputHidden();
 
     $this->disableCSRFProtection();
 
