@@ -1,0 +1,3 @@
+[submodule "lib/LooseCoupling"]
+  path = lib/LooseCoupling
+  url = git://github.com/caefer/LooseCoupling.git

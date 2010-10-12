@@ -19,7 +19,21 @@ class gjPositionsPluginConfiguration extends sfPluginConfiguration
    */
   public function initialize()
   {
-    Doctrine_Manager::getInstance()->registerHydrator(gjPositionsPluginConfiguration::HYDRATE_ARRAY_COUPLED, 'Doctrine_Hydrator_ArrayCoupledDriver');
-    Doctrine_Manager::getInstance()->registerHydrator(gjPositionsPluginConfiguration::HYDRATE_RECORD_COUPLED, 'Doctrine_Hydrator_RecordCoupledDriver');
+    // register a listener on the doctrine.configure event
+    $this->dispatcher->connect('doctrine.configure', array($this, 'configureDoctrine'));
+  }
+
+  /**
+   * Listens to the doctrine.configure event
+   *
+   * @param sfEvent $event
+   * @return void
+   */
+  public function configureDoctrine(sfEvent $event)
+  {
+    $manager = $event->getSubject();
+
+    $manager->registerHydrator(gjPositionsPluginConfiguration::HYDRATE_ARRAY_COUPLED, 'Doctrine_Hydrator_ArrayCoupledDriver');
+    $manager->registerHydrator(gjPositionsPluginConfiguration::HYDRATE_RECORD_COUPLED, 'Doctrine_Hydrator_RecordCoupledDriver');
   }
 }
