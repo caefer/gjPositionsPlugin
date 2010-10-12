@@ -10,21 +10,4 @@
  */
 abstract class PlugingjDesignElementForm extends BasegjDesignElementForm
 {
-  public function setup()
-  {
-    parent::setup();
-
-    //$this->widgetSchema['position'] = new sfWidgetFormInputHidden();
-    //$this->widgetSchema['name']     = new sfWidgetFormInputHidden();
-
-    $this->disableCSRFProtection();
-
-    unset($this['gj_page_id']);
-
-    $this->setOption('dynamic_relations', array('contents' => array(
-      'formatter_class'  => 'gjWidgetFormSchemaFormatterContentElement',
-    )));
-
-    $this->embedDynamicRelation('Contents');
-  }
 }

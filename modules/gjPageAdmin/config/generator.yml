@@ -16,6 +16,7 @@ generator:
       fields:  ~
       list:    ~
       filter:  ~
-      form:    ~
+      form:
+        class: gjPagePositionsForm
       edit:    ~
       new:     ~

@@ -10,14 +10,4 @@
  */
 abstract class PlugingjPageForm extends BasegjPageForm
 {
-  public function setup()
-  {
-    parent::setup();
-
-    $this->setOption('dynamic_relations', array('design_elements' => array(
-      'formatter_class'  => 'gjWidgetFormSchemaFormatterDesignElement',
-    )));
-
-    $this->embedDynamicRelation('DesignElements');
-  }
 }

@@ -1,0 +1,7 @@
+default:
+  stylesheets:
+    - /gjPositionsPlugin/css/positions.css
+  javascripts:
+    - /gjPositionsPlugin/js/jquery-1.4.2.min.js
+    - /gjPositionsPlugin/js/jquery-ui-1.8.5.custom.min.js
+    - /gjPositionsPlugin/js/positions.js

@@ -10,16 +10,4 @@
  */
 abstract class PlugingjContentElementForm extends BasegjContentElementForm
 {
-  public function setup()
-  {
-    parent::setup();
-
-    //$this->widgetSchema['position'] = new sfWidgetFormInputHidden();
-    //$this->widgetSchema['obj_type'] = new sfWidgetFormInputHidden();
-    //$this->widgetSchema['obj_pk']   = new sfWidgetFormInputHidden();
-
-    $this->disableCSRFProtection();
-
-    unset($this['gj_design_element_id']);
-  }
 }

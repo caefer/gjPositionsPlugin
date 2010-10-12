@@ -1,0 +1,15 @@
+div#content_element_items
+{
+  border: 1px solid #E0E0E0;
+}
+
+div#content_element_items > div
+{
+}
+
+div#content_element_items > div > label
+{
+  background: #e0e0e0;
+  padding: 0 5px;
+}
+
