@@ -8,4 +8,5 @@ gjContentElement:
     DesignElement:
       class:        gjDesignElement
       foreignAlias: Contents
-
+  options:
+    orderBy:      position
