@@ -24,13 +24,13 @@
     <td style="width:25%">
       <h3>Design Elements</h3>
 <div class="sf_admin_form" id="gj_page_admin_design_elements">
-  <?php //include_component('gjDesignElements', 'list', array('page' => $gj_page)); ?>
+  <?php include_component('gjDesignElements', 'list', array('page' => $gj_page)); ?>
 </div>
     </td>
     <td style="width:25%">
       <h3>Contents</h3>
 <div class="sf_admin_form" id="gj_page_admin_content_elements">
-  <?php //include_component('gjContentElements', 'list', array('page' => $gj_page)); ?>
+  <?php include_component('gjContentElements', 'list', array('page' => $gj_page)); ?>
 </div>
     </td>
   </td>
