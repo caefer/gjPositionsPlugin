@@ -21,7 +21,7 @@ gjContentElements = {
         items:'li:.content_element_item',
         axis:'y',
         sort:function(){$(this).removeClass('ui-state-default');},
-        update:function(){console.log($(this).find('input[name$=\[position\]][name*=\[contents\]]'));$(this).find('input[name$=\[position\]][name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
+        update:function(){$(this).find('input[name$=\[position\]][name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
       });
   }
 }
