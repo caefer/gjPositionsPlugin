@@ -5,7 +5,7 @@ abstract class BasehomepageActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->partials = sfConfig::get('app_gjPositionsPlugin_partials', array());
-    $this->page = Doctrine_Core::getTable('Page')->createQuery('p')
+    $this->page = Doctrine_Core::getTable('gjPage')->createQuery('p')
       ->leftJoin('p.DesignElements d')
       ->leftJoin('d.Contents c')
       ->orderBy('d.position')
