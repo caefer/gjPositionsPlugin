@@ -15,6 +15,23 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfigu
 <?php include dirname(__FILE__).'/fieldsConfiguration.php' ?>
 
   /**
+   * Gets a new form object.
+   *
+   * @param  mixed $object
+   * @param  array $options An array of options to merge with the options returned by getFormOptions()
+   *
+   * @return sfForm
+   */
+  public function getForm($object = null, $options = array())
+  {
+    sfWidgetFormSchema::setDefaultFormFormatterName('positions');
+    $form = parent::getForm($object, $options);
+    $form->embedDynamicRelation('DesignElements', 'gjDesignElementPositionsForm');
+    $form->getWidgetSchema()->setFormFormatterName('positions');
+    return $form;
+  }
+
+  /**
    * Gets the form class name.
    *
    * @return string The form class name
