@@ -1,4 +1,15 @@
 gjDesignElements = {
+  initDesignElements:function()
+  {
+    jQuery('.design-elements-head a').click(gjDesignElements.toggleDesignElement);
+  },
+  toggleDesignElement:function()
+  {
+    src = jQuery(this).children('img').attr('src');
+    src = src.match(/more/) ? src.replace(/more/, 'less') : src.replace(/less/, 'more');
+    jQuery(this).children('img').attr('src', src);
+    jQuery(this).parent().next('.design-element-include').slideToggle();
+  },
   init:function()
   {
     $('.content > .positions_container')
@@ -9,6 +20,7 @@ gjDesignElements = {
         sort:function(){$(this).removeClass('ui-state-default');},
         update:function(){$(this).find('input[name$=\[position\]]').not('input[name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
       });
+    gjDesignElements.initDesignElements();
   }
 }
 
