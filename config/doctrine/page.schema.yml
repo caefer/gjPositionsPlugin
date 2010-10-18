@@ -1,6 +1,4 @@
 gjPage:
-  actAs:
-    LooselyCoupled:
-      DesignElements: gjDesignElement
+  actAs:   [gjCompositionCanvas]
   columns:
-    title:            string(255)
+    title: string(255)
