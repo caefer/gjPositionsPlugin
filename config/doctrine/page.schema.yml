@@ -1,4 +1,0 @@
-gjPage:
-  actAs:   [gjCompositionCanvas]
-  columns:
-    title: string(255)
