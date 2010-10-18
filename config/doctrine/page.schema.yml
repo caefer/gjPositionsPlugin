@@ -1,3 +1,6 @@
 gjPage:
+  actAs:
+    LooselyCoupled:
+      DesignElements: gjDesignElement
   columns:
-    title:      string(255)
+    title:            string(255)

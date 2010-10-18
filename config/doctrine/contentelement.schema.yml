@@ -1,12 +1,12 @@
 gjContentElement:
   actAs:
-    Doctrine_Template_LooselyCoupleable: ~
+    LooselyCoupleable:    ~
   columns:
-    position:       integer
+    position:             integer
     gj_design_element_id: integer
   relations:
     DesignElement:
-      class:        gjDesignElement
-      foreignAlias: Contents
+      class:              gjDesignElement
+      foreignAlias:       Contents
   options:
-    orderBy:      position
+    orderBy:              position

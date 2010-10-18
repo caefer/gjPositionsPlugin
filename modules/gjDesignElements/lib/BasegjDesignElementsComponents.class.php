@@ -11,7 +11,6 @@ abstract class BasegjDesignElementsComponents extends sfComponents
   {
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
-    $designElement->Page = $this->page;
 
     $this->form = new gjDesignElementForm($designElement);
     $this->form->getWidgetSchema()->setNameFormat('gj_page[designElements][x][%s]');
