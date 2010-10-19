@@ -25,4 +25,14 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
     $this->form = new gjDesignElementPositionsForm($designElement);
     $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[designElements][x][%s]');
   }
+
+  public function executeContentelements_list(sfWebRequest $request)
+  {
+    $models = array('Article', 'Gallery', 'Glossary');
+    $this->allRecords = array();
+    foreach($models as $model)
+    {
+      $this->allRecords[$model] = Doctrine_Core::getTable($model)->findAll();
+    }
+  }
 }
