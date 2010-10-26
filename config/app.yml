@@ -1,8 +1,29 @@
 all:
   gjPositionsPlugin:
-    partials:
-      top_teaser:         teaser/top
-      medium_teaser:      teaser/medium
-      small_teaser:       teaser/small
-      two_column_teaser:  teaser/twoColumn
-      slideshow:          [slideshow,show]
+    design_elements:
+#    partials:
+#      top_teaser:         teaser/top
+#      medium_teaser:      teaser/medium
+#      small_teaser:       teaser/small
+#      two_column_teaser:  teaser/twoColumn
+#      slideshow:          [slideshow,show]
+      slideshow:
+        applies_to:       [ gjPage ]
+        include:          [slideshow/show]
+        accept:           [Image]
+        params:
+          autoplay:       { type: checkbox, default: true }
+      tag_related:
+        applies_to:       [ gjPage ]
+        include:          [search/related]
+        accept:           [Article,Image]
+        params:
+          number:         { type: text, default: "5" }
+      manual_link:
+        applies_to:       [ gjPage ]
+        include:          teaser/link
+        accept:           ~
+        params:
+          text:           { type: text, default: "Your link text" }
+          url:            { type: text, default: "http://" }
+          title:          { type: text, default: "Your link title" }
