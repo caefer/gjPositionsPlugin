@@ -8,5 +8,6 @@ gjContentElement:
     DesignElement:
       class:              gjDesignElement
       foreignAlias:       Contents
+      onDelete:           Cascade
   options:
     orderBy:              position
