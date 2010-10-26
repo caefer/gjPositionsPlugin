@@ -13,7 +13,7 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
 {
   public function executeDesignelements_list(sfWebRequest $request)
   {
-    $this->elements = sfConfig::get('app_gjPositionsPlugin_partials', array());
+    $this->elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
   }
 
   public function executeDesignelements_show(sfWebRequest $request)
