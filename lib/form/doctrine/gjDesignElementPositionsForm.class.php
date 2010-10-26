@@ -25,5 +25,22 @@ class gjDesignElementPositionsForm extends PlugingjDesignElementForm
 
     $this->getWidgetSchema()->addFormFormatter('design_element', new gjWidgetFormSchemaFormatterDesignElement($this->getWidgetSchema()));
     $this->widgetSchema->setFormFormatterName('design_element');
+
+    $this->widgetSchema['params'] = new sfWidgetFormInputArray(array('config' => $this->getConfigForParams()));
+  }
+
+  protected function getConfigForParams()
+  {
+    $name = $this->getObject()->name;
+    $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+
+    if(empty($name) || !array_key_exists($name, $config) || empty($config[$name]['params']))
+    {
+      return array();
+    }
+    else
+    {
+      return $config[$name]['params'];
+    }
   }
 }
