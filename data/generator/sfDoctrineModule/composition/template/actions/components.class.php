@@ -11,16 +11,18 @@
  */
 abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends sfComponents
 {
+  protected $modelClasses = array();
+
   public function executeDesignelements_list(sfWebRequest $request)
   {
-    $this->elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+    $elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+    $this->elements = array_filter($elements, array($this, 'filterAppropriate'));
   }
 
   public function executeDesignelements_show(sfWebRequest $request)
   {
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
-    //$designElement->setObject($this->canvas);
 
     $this->form = new gjDesignElementPositionsForm($designElement);
     $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[designElements][x][%s]');
@@ -28,11 +30,26 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
 
   public function executeContentelements_list(sfWebRequest $request)
   {
-    $models = array('Article', 'Gallery', 'Glossary');
+    $elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+    $this->elements = array_filter($elements, array($this, 'filterAppropriate'));
     $this->allRecords = array();
-    foreach($models as $model)
+    foreach($this->modelClasses as $modelClass)
     {
-      $this->allRecords[$model] = Doctrine_Core::getTable($model)->findAll();
+      $this->allRecords[$modelClass] = Doctrine_Core::getTable($modelClass)->findAll();
     }
+  }
+
+  protected function filterAppropriate($designElement)
+  {
+    if(in_array('<?php echo $this->getModelClass() ?>', $designElement['applies_to']))
+    {
+      if(is_array($designElement['accept']))
+      {
+        $this->modelClasses = array_unique(array_merge($this->modelClasses, $designElement['accept']));
+      }
+      return true;
+    }
+
+    return false;
   }
 }
