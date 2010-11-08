@@ -1,29 +1,9 @@
 all:
   gjPositionsPlugin:
     design_elements:
-#    partials:
-#      top_teaser:         teaser/top
-#      medium_teaser:      teaser/medium
-#      small_teaser:       teaser/small
-#      two_column_teaser:  teaser/twoColumn
-#      slideshow:          [slideshow,show]
-      slideshow:
-        applies_to:       [ gjPage ]
-        include:          [slideshow/show]
-        accept:           [Image]
-        params:
-          autoplay:       { type: checkbox, default: true }
-      tag_related:
-        applies_to:       [ gjPage ]
-        include:          [search/related]
-        accept:           [Article,Image]
-        params:
-          number:         { type: text, default: "5" }
-      manual_link:
-        applies_to:       [ gjPage ]
-        include:          teaser/link
-        accept:           ~
-        params:
-          text:           { type: text, default: "Your link text" }
-          url:            { type: text, default: "http://" }
-          title:          { type: text, default: "Your link title" }
+#      slideshow:
+#        applies_to:       [ gjPage ]                         # list the models that your design element can be used with
+#        include:          [slideshow, show]                  # provide a partial 'module/action' or component [module, action] that renders this design element
+#        accept:           [Image]                            # list all models that can be rendered in this design elment or ~ if none
+#        params:                                              # list as many parameters as this design element needs to be configured in the admin module
+#          autoplay:       { type: checkbox, default: true }  # provide a type and optionally a default value
