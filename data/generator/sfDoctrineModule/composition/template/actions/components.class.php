@@ -24,6 +24,12 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
 
+    $this->params = array();
+    foreach($this->config['params'] as $key => $value)
+    {
+      $this->params[$key] = $value['default'];
+    }
+
     $this->form = new gjDesignElementPositionsForm($designElement);
     $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[designElements][x][%s]');
   }

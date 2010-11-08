@@ -1,15 +1,35 @@
-div#content_element_items
+#content_element_source_list
 {
-  border: 1px solid #E0E0E0;
+  margin: 0;
 }
 
-div#content_element_items > div
+#content_element_source_list > li
 {
+  list-style-type: none;
+  border: 1px solid #AAAAAA;
+  padding: 3px 0;
+  margin: 5px 0;
 }
 
-div#content_element_items > div > label
+#content_element_source_list .contents
 {
-  background: #e0e0e0;
-  padding: 0 5px;
+  border: 1px solid #DDDDDD;
+  margin: 5px 0;
+}
+
+#content_element_source_list .contents li
+{
+  list-style-position: inside;
+  padding: 1px 3px;
+}
+
+#content_element_source_list .contents li.odd
+{
+  background: #DDDDDD;
+}
+
+#content_element_source_list .contents li.even
+{
+  background: #EEEEEE;
 }
 

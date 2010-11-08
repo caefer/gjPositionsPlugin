@@ -72,6 +72,6 @@ class sfWidgetFormInputArray extends sfWidgetFormInputText
                   ), $attributes));
     }
 
-    return '<fieldset>'.implode("<br />\n", $output).'</fieldset>';
+    return '<fieldset class="design-element-params">'.implode("<br />\n", $output).'</fieldset>';
   }
 }

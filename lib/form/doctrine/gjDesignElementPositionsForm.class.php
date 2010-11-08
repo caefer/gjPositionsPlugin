@@ -18,15 +18,18 @@ class gjDesignElementPositionsForm extends PlugingjDesignElementForm
     $this->useFields(array('position', 'name'));
 
     $this->embedDynamicRelation('Contents', 'gjContentElementPositionsForm');
+
     $this->widgetSchema['contents']->addFormFormatter('container', new gjWidgetFormSchemaFormatterContentElementContainer($this->widgetSchema));
     $this->widgetSchema['contents']->setFormFormatterName('container');
-    //$this->widgetSchema['contents']->setFormFormatterName('positions');
     $this->validatorSchema['contents']->setOption('allow_extra_fields', true);
 
     $this->getWidgetSchema()->addFormFormatter('design_element', new gjWidgetFormSchemaFormatterDesignElement($this->getWidgetSchema()));
     $this->widgetSchema->setFormFormatterName('design_element');
 
     $this->widgetSchema['params'] = new sfWidgetFormInputArray(array('config' => $this->getConfigForParams()));
+
+    $this->widgetSchema->setLabel('params', false);
+    $this->widgetSchema->setLabel('contents', false);
   }
 
   protected function getConfigForParams()

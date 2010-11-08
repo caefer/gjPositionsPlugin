@@ -1,8 +1,11 @@
       <div class="design-elements-head">
-        <!-- <a href="#inc_[?php echo $name; ?]"><img src="/gjPositionsPlugin/images/more.png" /></a> -->
         <strong>[?php echo sfInflector::humanize($name); ?]</strong>
       </div>
-      <div class="design-element-include" id="inc_[?php echo $name; ?]" style="display:[?php echo $collapsed ? 'none' : 'block'; ?]">
-        [?php //is_string($partial) ? include_partial($partial) : include_component($partial[0], $partial[1]); ?]
+      <div class="design-element-include" id="inc_[?php echo $name; ?]">
+        <div>
+          [?php is_string($config['include']) ? include_partial($config['include'], array('params' => $params)) : include_component($config['include'][0], $config['include'][1], array('params' => $params)); ?]
+        </div>
       </div>
-[?php if(isset($form)) echo $form; ?]
+      <div class="design-element-form" id="form_[?php echo $name; ?]" style="display:[?php echo $collapsed ? 'none' : 'block'; ?]">
+        [?php if(isset($form)) echo $form; ?]
+      </div>

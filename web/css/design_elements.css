@@ -13,3 +13,39 @@ div#design_element_items > div > label
   padding: 0 5px;
 }
 
+.design-element-include
+{
+  background: #EEEEEE;
+  border: 1px dotted #DDDDDD;
+  padding: 8px;
+}
+
+.design-element-include > div
+{
+  background: #FFFFFF;
+  border: 1px dotted #DDDDDD;
+  padding: 3px;
+}
+
+#design_element_source_list
+{
+  margin: 0;
+}
+
+#design_element_source_list > li
+{
+  list-style-type: none;
+  border: 1px solid #AAAAAA;
+  padding: 3px 0;
+  margin: 5px 0;
+}
+
+#design_element_source_list fieldset
+{
+  border: 1px solid #DDDDDD;
+  background: #EEEEEE;
+  padding: 3px;
+  margin: 5px 0;
+}
+
+
