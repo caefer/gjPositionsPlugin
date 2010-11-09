@@ -23,6 +23,7 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
   {
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
+    $designElement->setObject($this->canvas);
 
     $this->params = array();
     foreach($this->config['params'] as $key => $value)
@@ -30,8 +31,8 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
       $this->params[$key] = $value['default'];
     }
 
-    $this->form = new gjDesignElementPositionsForm($designElement);
-    $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[designElements][x][%s]');
+    $this->form = new gjDesignElementPositionsForm($designElement, array(), false);
+    $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[design_elements][x][%s]');
   }
 
   public function executeContentelements_list(sfWebRequest $request)

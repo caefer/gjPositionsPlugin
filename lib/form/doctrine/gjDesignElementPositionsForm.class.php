@@ -14,8 +14,9 @@ class gjDesignElementPositionsForm extends PlugingjDesignElementForm
   {
     $this->widgetSchema['position'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['name']     = new sfWidgetFormInputHidden();
+    $this->widgetSchema['obj_type'] = new sfWidgetFormInputHidden();
 
-    $this->useFields(array('position', 'name'));
+    $this->useFields(array('position', 'name', 'params', 'obj_type'));
 
     $this->embedDynamicRelation('Contents', 'gjContentElementPositionsForm');
 
