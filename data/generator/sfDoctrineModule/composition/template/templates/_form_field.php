@@ -8,7 +8,21 @@
     <div>
       [?php echo $form[$name]->renderLabel($label) ?]
 
-      <div class="content">[?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]</div>
+      <div class="content">
+      [?php if('design_elements' == $name && 'sfFormFieldSchema' == get_class($form[$name])): ?]
+        <ol class="positions_container">
+        [?php foreach ($form[$name] as $embeddedName => $embeddedField): ?]
+          <li>
+            [?php $elementName = $embeddedField['name']->getValue() ?]
+            [?php $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array()) ?]
+            [?php include_partial('<?php echo $this->getModuleName() ?>/designelements_show', array('name' => $elementName, 'config' => $config[$elementName], 'form' => $embeddedField, 'params' => $embeddedField['params']->getValue())); ?]
+          </li>
+        [?php endforeach ?]
+        </ol>
+      [?php else: ?]
+        [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
+      [?php endif; ?]
+      </div>
 
       [?php if ($help): ?]
         <div class="help">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</div>
