@@ -1,3 +1,41 @@
+gjCompositionCanvas = function(form)
+{
+  this.form = form;
+
+  /**
+   * updates all positions of embedded design and content elements
+   */
+  this.updatePositions = function(event)
+  {
+    form = $(event.currentTarget);
+    form.find('.content > ol > li').each(function(i, designelement)
+    {
+      $(designelement).find('input, select, textarea').each(function(j, field)
+      {
+        field.name = field.name
+          .replace(/\[design_elements\]\[(?:\d|XX)\]/, '[design_elements]['+i+']')
+          .replace(/\[contents\]\[(?:\d|XX)\]/, '[contents]['+j+']');
+        field.id = field.id
+          .replace(/design_elements_(?:\d|XX)_/, 'design_elements_'+i+'_')
+          .replace(/contents_(?:\d|XX)_/, 'contents_'+j+'_');
+      });
+    });
+  };
+
+  this.form.find('.content > .positions_container')
+    .sortable(
+    {
+      items:'li:not(.placeholder,.content_element_item)',
+      axis:'y',
+      sort:function(){$(this).removeClass('ui-state-default');},
+      update:function(){$(this).find('input[name$=\[position\]]').not('input[name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
+    });
+
+  // bind events
+  this.form.submit(this.updatePositions);
+}
+
+
 gjDesignElements = {
   initDesignElements:function()
   {
@@ -12,14 +50,6 @@ gjDesignElements = {
   },
   init:function()
   {
-    $('.content > .positions_container')
-      .sortable(
-      {
-        items:'li:not(.placeholder,.content_element_item)',
-        axis:'y',
-        sort:function(){$(this).removeClass('ui-state-default');},
-        update:function(){$(this).find('input[name$=\[position\]]').not('input[name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
-      });
     gjDesignElements.initDesignElements();
   }
 }
@@ -38,5 +68,6 @@ gjContentElements = {
   }
 }
 
-jQuery(document).ready(gjDesignElements.init);
-jQuery(document).ready(gjContentElements.init);
+jQuery(document).ready(function(){new gjCompositionCanvas($('.sf_admin_form > form'))});
+//jQuery(document).ready(gjDesignElements.init);
+//jQuery(document).ready(gjContentElements.init);
