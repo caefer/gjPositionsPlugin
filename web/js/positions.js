@@ -30,8 +30,10 @@ gjCompositionCanvas = function(form)
   };
 
   this.form.find('.content > .positions_container').sortable({
-      items:'li:not(.placeholder,.content_element_item)',
+//      items:'li:not(.placeholder,.content_element_item)',
       axis:'y',
+      placeholder: 'ui-state-highlight',
+      forcePlaceholderSize: true
     });
 
   $('#design_element_source_list li').draggable({
@@ -42,40 +44,4 @@ gjCompositionCanvas = function(form)
   // bind events
   this.form.submit(this.updatePositions);
 }
-
-
-gjDesignElements = {
-  initDesignElements:function()
-  {
-    jQuery('.design-elements-head a').click(gjDesignElements.toggleDesignElement);
-  },
-  toggleDesignElement:function()
-  {
-    src = jQuery(this).children('img').attr('src');
-    src = src.match(/more/) ? src.replace(/more/, 'less') : src.replace(/less/, 'more');
-    jQuery(this).children('img').attr('src', src);
-    jQuery(this).parent().next('.design-element-include').slideToggle();
-  },
-  init:function()
-  {
-    gjDesignElements.initDesignElements();
-  }
-}
-
-gjContentElements = {
-  init:function()
-  {
-    $('#design_element_items .positions_container')
-      .sortable(
-      {
-        items:'li:.content_element_item',
-        axis:'y',
-        sort:function(){$(this).removeClass('ui-state-default');},
-        update:function(){$(this).find('input[name$=\[position\]][name*=\[contents\]]').each(function(i,element){$(element).val(i);});}
-      });
-  }
-}
-
 jQuery(document).ready(function(){new gjCompositionCanvas($('.sf_admin_form > form'))});
-//jQuery(document).ready(gjDesignElements.init);
-//jQuery(document).ready(gjContentElements.init);
