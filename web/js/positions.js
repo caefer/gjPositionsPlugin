@@ -13,11 +13,11 @@ gjCompositionCanvas = function(form)
       $(designelement).find('input, select, textarea').each(function(j, field)
       {
         field.name = field.name
-          .replace(/\[design_elements\]\[(?:\d|XX)\]/, '[design_elements]['+i+']')
-          .replace(/\[contents\]\[(?:\d|XX)\]/, '[contents]['+j+']');
+          .replace(/\[design_elements\]\[(?:\d|x)\]/, '[design_elements]['+i+']')
+          .replace(/\[contents\]\[(?:\d|x)\]/, '[contents]['+j+']');
         field.id = field.id
-          .replace(/design_elements_(?:\d|XX)_/, 'design_elements_'+i+'_')
-          .replace(/contents_(?:\d|XX)_/, 'contents_'+j+'_');
+          .replace(/design_elements_(?:\d|x)_/, 'design_elements_'+i+'_')
+          .replace(/contents_(?:\d|x)_/, 'contents_'+j+'_');
       });
     });
   };
