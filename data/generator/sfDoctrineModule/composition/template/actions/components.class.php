@@ -23,7 +23,6 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
   {
     $designElement = new gjDesignElement();
     $designElement->name = $this->name;
-    $designElement->setObject($this->canvas);
 
     $this->params = array();
     foreach($this->config['params'] as $key => $value)
