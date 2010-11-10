@@ -24,13 +24,13 @@
     <td style="width:25%">
       <h3>Design Elements</h3>
       <div class="sf_admin_form" id="gj_page_admin_design_elements">
-        [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_list', array('canvas' => $<?php echo $this->getSingularName() ?>)); ?]
+        [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_list', array('obj_type' => '<?php echo $this->getModelClass() ?>')); ?]
       </div>
     </td>
     <td style="width:25%">
       <h3>Contents</h3>
       <div class="sf_admin_form" id="gj_page_admin_content_elements">
-        [?php include_component('<?php echo $this->getModuleName() ?>', 'contentelements_list', array('canvas' => $<?php echo $this->getSingularName() ?>)); ?]
+        [?php include_component('<?php echo $this->getModuleName() ?>', 'contentelements_list', array()); ?]
       </div>
     </td>
   </td>
