@@ -37,7 +37,7 @@ gjCompositionCanvas = function(form)
       receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();},
       over: function(event, ui){removeMe = 0},
       out: function(event, ui){removeMe = 1},
-      beforeStop: function(event, ui){if(removeMe) ui.item.remove()}
+      beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
     });
 
   $('#design_element_source_list li').draggable({
