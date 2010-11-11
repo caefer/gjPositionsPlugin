@@ -3,6 +3,16 @@
 
 .content > .positions_container
 {
+  margin: 0;
   min-height:40px;
   border:1px dotted #EEEEEE;
 }
+
+.content > .positions_container > li
+{
+  border:1px solid #AAAAAA;
+  list-style-type:none;
+  margin:5px 0;
+  padding:3px 0;
+}
+
