@@ -31,10 +31,13 @@ gjCompositionCanvas = function(form)
 
   this.form.find('.content > .positions_container').sortable({
 //      items:'li:not(.placeholder,.content_element_item)',
-      axis:'y',
+      //axis:'y',
       placeholder: 'ui-state-highlight',
       forcePlaceholderSize: true,
-      receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();}
+      receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();},
+      over: function(event, ui){removeMe = 0},
+      out: function(event, ui){removeMe = 1},
+      beforeStop: function(event, ui){if(removeMe) ui.item.remove()}
     });
 
   $('#design_element_source_list li').draggable({
