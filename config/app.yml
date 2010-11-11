@@ -2,6 +2,7 @@ all:
   gjPositionsPlugin:
     design_elements:
 #      slideshow:
+#        description:      "This element is described here so the editor can see what it does."
 #        applies_to:       [ gjPage ]                         # list the models that your design element can be used with
 #        include:          [slideshow, show]                  # provide a partial 'module/action' or component [module, action] that renders this design element
 #        accept:           [Image]                            # list all models that can be rendered in this design elment or ~ if none

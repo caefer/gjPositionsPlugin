@@ -33,7 +33,8 @@ gjCompositionCanvas = function(form)
 //      items:'li:not(.placeholder,.content_element_item)',
       axis:'y',
       placeholder: 'ui-state-highlight',
-      forcePlaceholderSize: true
+      forcePlaceholderSize: true,
+      receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();}
     });
 
   $('#design_element_source_list li').draggable({
