@@ -35,12 +35,41 @@ gjCompositionCanvas = function(form)
           {
             field.value = j;
           }
+        //console.log(field.name+' => '+field.value);
         });
       });
     });
+    //form.unbind();
+    //return false;
   };
 
-  this.form.find('.content > .positions_container').sortable({
+  this.turnCanvasToSortables = function()
+  {
+    design_element_container = this.form.find('.content > .positions_container');
+    design_element_container.sortable({
+      axis:'y',
+      placeholder: 'ui-state-highlight',
+      forcePlaceholderSize: true,
+      receive: function(event, ui)
+      {
+        $(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();
+        canvas.turnDesignElementsToSortables();
+      },
+      over: function(event, ui){removeMe = 0},
+      out: function(event, ui){removeMe = 1},
+      beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
+    }).effect('highlight');
+
+    $('#design_element_source_list > li').draggable({
+      connectToSortable:design_element_container,
+      helper:'clone'
+    })
+  }
+
+  this.turnDesignElementsToSortables = function()
+  {
+    content_element_containers = this.form.find('.content .design-element-form .positions_container');
+    content_element_containers.sortable({
       axis:'y',
       placeholder: 'ui-state-highlight',
       forcePlaceholderSize: true,
@@ -48,29 +77,17 @@ gjCompositionCanvas = function(form)
       over: function(event, ui){removeMe = 0},
       out: function(event, ui){removeMe = 1},
       beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
-    });
+    }).effect('highlight');
 
-  this.form.find('.content .design-element-form .positions_container').sortable({
-      axis:'y',
-      placeholder: 'ui-state-highlight',
-      forcePlaceholderSize: true,
-      receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();},
-      over: function(event, ui){removeMe = 0},
-      out: function(event, ui){removeMe = 1},
-      beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
-    });
+    $('#content_element_source_list .contents > li').draggable({
+      connectToSortable:content_element_containers,
+      helper:'clone'
+    })
+  }
 
-  $('#design_element_source_list > li').draggable({
-    connectToSortable:$('.content > .positions_container'),
-    helper:'clone'
-  })
 
-  $('#content_element_source_list .contents > li').draggable({
-    connectToSortable:$('.content .design-element-form .positions_container'),
-    helper:'clone'
-  })
-
-  // bind events
+  // initialisation
   this.form.submit(this.updatePositions);
+  this.turnCanvasToSortables();
 }
-jQuery(document).ready(function(){new gjCompositionCanvas($('.sf_admin_form > form'))});
+jQuery(document).ready(function(){canvas = new gjCompositionCanvas($('.sf_admin_form > form'))});
