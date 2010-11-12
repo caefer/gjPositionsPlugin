@@ -2,8 +2,8 @@ gjDesignElement:
   actAs:
     LooselyCoupleable:    ~
   columns:
-    name:           string(24)
-    position:       integer
-    params:         array(255)
+    name:                 string(24)
+    position:             integer
+    params:               array(255)
   options:
-    orderBy:        position
+    orderBy:              position
