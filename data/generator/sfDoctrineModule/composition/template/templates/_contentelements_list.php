@@ -6,10 +6,10 @@
 [?php foreach($records as $i => $record): ?]
       <li class="[?php echo $i%2 ? 'even' : 'odd' ?]">
         <em>[?php echo $record; ?]</em>
-        <input type="hidden" id="gj_page_designElements_%de%_Contents_%ce%_id" value="" name="gj_page[designElements][%de%][Contents][%ce%][id]" />
-        <input type="hidden" id="gj_page_designElements_%de%_Contents_%ce%_position" value="%POSITION%" name="gj_page[designElements][%de%][Contents][%ce%][position]" />
-        <input type="hidden" id="gj_page_designElements_%de%_Contents_%ce%_obj_type" value="[?php echo get_class($record); ?>" name="gj_page[designElements][%de%][Contents][%ce%][obj_type]" />
-        <input type="hidden" id="gj_page_designElements_%de%_Contents_%ce%_obj_pk" value="[?php echo $record->id; ?>" name="gj_page[designElements][%de%][Contents][%ce%][obj_pk]" />
+        <input type="hidden" id="<?php echo $this->getSingularName(); ?>_design_elements_x_contents_x_id" value="" name="<?php echo $this->getSingularName(); ?>[design_elements][x][contents][x][id]" />
+        <input type="hidden" id="<?php echo $this->getSingularName(); ?>_design_elements_x_contents_x_position" value="0" name="<?php echo $this->getSingularName(); ?>[design_elements][x][contents][x][position]" />
+        <input type="hidden" id="<?php echo $this->getSingularName(); ?>_design_elements_x_contents_x_obj_type" value="[?php echo $model; ?>" name="<?php echo $this->getSingularName(); ?>[design_elements][x][contents][x][obj_type]" />
+        <input type="hidden" id="<?php echo $this->getSingularName(); ?>_design_elements_x_contents_x_obj_pk" value="[?php echo $record->id; ?>" name="<?php echo $this->getSingularName(); ?>[design_elements][x][contents][x][obj_pk]" />
       </li>
 [?php endforeach; ?]
     </ol>
