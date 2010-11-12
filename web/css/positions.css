@@ -16,3 +16,8 @@
   padding: 0;
 }
 
+.content .design-element-form .positions_container
+{
+  min-height:40px;
+  border:1px dotted #EEEEEE;
+}
