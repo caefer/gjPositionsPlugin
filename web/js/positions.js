@@ -35,12 +35,9 @@ gjCompositionCanvas = function(form)
           {
             field.value = j;
           }
-          console.log(field.name+' => '+field.value);
         });
       });
     });
-    form.unbind();
-    return false;
   };
 
   this.form.find('.content > .positions_container').sortable({
