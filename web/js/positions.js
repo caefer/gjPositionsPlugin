@@ -43,46 +43,35 @@ gjCompositionCanvas = function(form)
     //return false;
   };
 
+  this._sortableDefaultOptions = {
+    axis:'y',
+    placeholder: 'ui-state-highlight',
+    forcePlaceholderSize: true,
+    over: function(event, ui){removeMe = 0},
+    out: function(event, ui){removeMe = 1},
+    beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
+  };
+
+  this.receiveDesignElement = function(event, ui)
+  {
+    $(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();
+    canvas.turnDesignElementsToSortables();
+  }
+
   this.turnCanvasToSortables = function()
   {
     design_element_container = this.form.find('.content > .positions_container');
-    design_element_container.sortable({
-      axis:'y',
-      placeholder: 'ui-state-highlight',
-      forcePlaceholderSize: true,
-      receive: function(event, ui)
-      {
-        $(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();
-        canvas.turnDesignElementsToSortables();
-      },
-      over: function(event, ui){removeMe = 0},
-      out: function(event, ui){removeMe = 1},
-      beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
-    }).effect('highlight');
+    design_element_container.sortable($.extend({receive: this.receiveDesignElement}, this._sortableDefaultOptions)).effect('highlight');
 
-    $('#design_element_source_list > li').draggable({
-      connectToSortable:design_element_container,
-      helper:'clone'
-    })
+    $('#design_element_source_list > li').draggable({connectToSortable: design_element_container, helper: 'clone'})
   }
 
   this.turnDesignElementsToSortables = function()
   {
     content_element_containers = this.form.find('.content .design-element-form .positions_container');
-    content_element_containers.sortable({
-      axis:'y',
-      placeholder: 'ui-state-highlight',
-      forcePlaceholderSize: true,
-      receive: function(event, ui){$(event.target).find('li:.ui-draggable').removeClass('ui-draggable').children('div').toggle();},
-      over: function(event, ui){removeMe = 0},
-      out: function(event, ui){removeMe = 1},
-      beforeStop: function(event, ui){if(1 == removeMe) ui.item.remove()}
-    }).effect('highlight');
+    content_element_containers.sortable($.extend({}, this._sortableDefaultOptions)).effect('highlight');
 
-    $('#content_element_source_list .contents > li').draggable({
-      connectToSortable:content_element_containers,
-      helper:'clone'
-    })
+    $('#content_element_source_list .contents > li').draggable({connectToSortable: content_element_containers, helper: 'clone'})
   }
 
 
@@ -90,4 +79,5 @@ gjCompositionCanvas = function(form)
   this.form.submit(this.updatePositions);
   this.turnCanvasToSortables();
 }
+
 jQuery(document).ready(function(){canvas = new gjCompositionCanvas($('.sf_admin_form > form'))});
