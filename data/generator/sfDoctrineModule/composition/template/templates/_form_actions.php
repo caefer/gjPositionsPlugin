@@ -12,6 +12,9 @@
 <?php elseif ('_list' == $name): ?>
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkToList('.$this->asPhp($params).') ?]', $params) ?>
 
+<?php elseif ('_preview' == $name): ?>
+  <?php echo $this->addCredentialCondition('[?php echo $helper->linkToPreview($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
+
 <?php elseif ('_save' == $name): ?>
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkToSave($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
 

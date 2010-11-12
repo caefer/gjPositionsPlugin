@@ -6,7 +6,7 @@
 
   public function getFormActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['form']['actions']) ? $this->config['form']['actions'] : array('_delete' => null, '_list' => null, '_save' => null, '_save_and_add' => null)) ?>;
+    return <?php echo $this->asPhp(isset($this->config['form']['actions']) ? $this->config['form']['actions'] : array('_delete' => null, '_list' => null, '_preview' => null, '_save' => null, '_save_and_add' => null)) ?>;
 <?php unset($this->config['form']['actions']) ?>
   }
 

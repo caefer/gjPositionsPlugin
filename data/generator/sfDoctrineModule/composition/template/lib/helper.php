@@ -14,4 +14,9 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
   {
     return 'list' == $action ? '<?php echo $this->params['route_prefix'] ?>' : '<?php echo $this->params['route_prefix'] ?>_'.$action;
   }
+
+  public function linkToPreview($object, $params)
+  {
+    return '<li class="sf_admin_action_preview"><input type="submit" value="'.__($params['label'], array(), 'sf_admin').'" name="_preview" /></li>';
+  }
 }

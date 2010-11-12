@@ -3,6 +3,20 @@
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+      if ($request->hasParameter('_preview'))
+      {
+        $<?php echo $this->getSingularName() ?> = $form->updateObject();
+        $this->getUser()->setFlash('preview_form_values', $form->getTaintedValues());
+        if($<?php echo $this->getSingularName() ?>->isNew())
+        {
+          $this->redirect('@<?php echo $this->getUrlForAction('new') ?>');
+        }
+        else
+        {
+          $this->redirect(array('sf_route' => '<?php echo $this->getUrlForAction('edit') ?>', 'sf_subject' => $<?php echo $this->getSingularName() ?>));
+        }
+      }
+
       $notice = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
 
       try {
