@@ -27,10 +27,10 @@ gjCompositionCanvas = function(form)
         $(contentelement).find('input, select, textarea').each(function(k, field)
         {
           // update name and id
-          field.name = field.name.replace(/\[contents\]\[(?:\d|x)\]/, '[contents]['+total_content_elements+']');
-          field.id = field.id.replace(/contents_(?:\d|x)_/, 'contents_'+total_content_elements+'_');
+          field.name = field.name.replace(/\[contents\]\[x]/, '[contents]['+total_content_elements+']');
+          field.id = field.id.replace(/contents_x/, 'contents_'+total_content_elements+'_');
           // update position
-          if(-1 != field.name.search(/\[contents\]\[(?:\d|x)\]\[position\]/))
+          if(-1 != field.name.search(/\[contents\]\[\d\]\[position\]/))
           {
             field.value = j;
           }
