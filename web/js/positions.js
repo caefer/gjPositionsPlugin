@@ -78,6 +78,7 @@ gjCompositionCanvas = function(form)
   // initialisation
   this.form.submit(this.updatePositions);
   this.turnCanvasToSortables();
+  this.turnDesignElementsToSortables();
 }
 
 jQuery(document).ready(function(){canvas = new gjCompositionCanvas($('.sf_admin_form > form'))});
