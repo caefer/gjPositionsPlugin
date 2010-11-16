@@ -26,9 +26,12 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
     $designElement->obj_type = $this->obj_type;
 
     $this->params = array();
-    foreach($this->config['params'] as $key => $value)
+    if(!empty($this->config['params']))
     {
-      $this->params[$key] = $value['default'];
+      foreach($this->config['params'] as $key => $value)
+      {
+        $this->params[$key] = $value['default'];
+      }
     }
 
     $this->form = new gjDesignElementPositionsForm($designElement, array(), false);
