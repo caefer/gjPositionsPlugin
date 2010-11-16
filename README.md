@@ -17,7 +17,12 @@ Currently you can only get this plugin from GitHub. It is still highly experimen
     $ cd plugins
     $ git clone git://github.com/caefer/gjPositionsPlugin.git
 
-Then edit your ProjectConfiguration class and enable the plugin.
+This plugin depends on my fork of sfDoctrineDynamicFormRelationsPlugin which is originally developed by Kris Wallsmith. A pull request is issued already so hopefully both versions can be merged again.
+
+    $ cd plugins
+    $ git clone git://github.com/caefer/sfDoctrineDynamicFormRelationsPlugin.git
+
+Then edit your ProjectConfiguration class and enable the plugins.
 
 ## Term Definition
 
