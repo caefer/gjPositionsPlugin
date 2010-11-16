@@ -12,5 +12,8 @@
  */
 abstract class PlugingjContentElement extends BasegjContentElement
 {
-
+  public function __toString()
+  {
+    return (string) $this->getObject();
+  }
 }
