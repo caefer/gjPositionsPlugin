@@ -61,7 +61,14 @@ class sfWidgetFormInputArray extends sfWidgetFormInputText
     {
       if(in_array($config['type'], array('checkbox', 'radio')))
       {
-        $attributes['checked'] = 'checked';
+        if(!is_null($value) && array_key_exists($field, $value) && $value[$field])
+        {
+          $attributes['checked'] = 'checked';
+        }
+        else
+        {
+          $value[$field] = 0;
+        }
       }
 
       $output[] = $this->renderContentTag('label', sfInflector::humanize($field)).PHP_EOL.
