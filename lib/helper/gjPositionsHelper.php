@@ -10,8 +10,9 @@ function get_design_element($designElement)
   $configs = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
 
   $options = array(
-    'params'  => $designElement['params'],
-    'subject' => $designElement->getObject()
+    'params'   => $designElement['params'],
+    'subject'  => $designElement->getObject(),
+    'contents' => $designElement['Contents']
   );
 
   if(is_string($include = $configs[$designElement['name']]['include']))
