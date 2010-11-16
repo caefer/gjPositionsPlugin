@@ -53,6 +53,7 @@ This one is totally up to you! A _Design Element_ can be anything from a simple 
 
 1. `params` is an array of settings saved for this _Design Element_. You will see in a moment how this can be done.
 2. `subject` is the instance of your composition model (i.e. `Homepage`) that this _Design Element_ is assigned to.
+2. `contents` is a list of _Content Elements_ that were manually assigned to the _Design Element_.
 
 ### 3. Configure your _Design Elements_ to be used in the generated admin module
 
@@ -142,36 +143,112 @@ Taking the above example the following settings will limit the use of a `banner`
           banner:
             description:      "This is a simple banner"
             applies_to:       [ Homepage, Sidebar ]
-            include:          [ yourmodule, banner ] // for a component you provide an array
+            include:          [ yourmodule, banner ]
             accept:           ~
             params:           ~
 
 ### 2. Parameterizing _Desing Elements_
 
-...
+With all the above you would be able to implement for example a _Design Element_ that displays the _latest articles_ that have been created in your database. This would be a simple component that fetches a number of articles from the database and renders them in a list in its partial template.
+
+You can use this one _Design Element_ on all your `Homepages`. But you might want to filter the articles for a section homepage to show only those related to this section? Or you might want to list the latest 20 articles on your homepage but only 10 on your section homepage?
+
+For this you can configure parameters on _Design Elements_ like the following.
+
+    all:
+      gjPositionsPlugin:
+        design_elements:
+          latestArticles:
+            description:      "Shows the latest articles"
+            applies_to:       [ Homepage ]
+            include:          [ article, latest ]
+            accept:           ~
+            params:
+              number:         { type: text, default: "5" }
+              section_id:     { type: text, default: false }
+
+These above settings will result in two more input fields on the _Design Element_ in your admin module. They can be edited per assignation.
+
+All types of `<input/>` tags are available but probably only a few like `text`, `checkbox` or `radio` make sense.
+
+The values of these parameters will be available in your component and/or partial.
+
+    // in your component
+    ...
+    $this->articles = Doctrine_Query::create()
+      ->from('Article a')
+      ->orderBy('a.created_at DESC')
+      ->limit($this->params['number'])
+      ->execute();
+    ...
+
+    // in your partial
+    ...
+    <?php for($i=0; $i < $params['number']; $i++): ?>
+      ...
+    <?php endfor; ?>
+    ...
 
 ### 3. Manually assigning _Content Elements_ to _Design Elements_
 
-    Article:
+Another form of parameterisation but with added usability is the assignment of _Content Elements_ to a _Design Element_.
+
+To give you an example you might want to show a _Design Element_ "slideshow" on the top of your `homepage` but you want to assign the images manually.
+
+Lets prepare the `Image` model first.
+
+    Image:
       actAs:
-        LooselyCoupled:
-          ContentElement: gjContentElement
+        gjContentElementable: ~
         title: string(255)
+        file:  string(255)
         ...
 
-    FAQ:
-      actAs:
-        LooselyCoupled:
-          ContentElement: gjContentElement
-        title: string(255)
-        ...
+After you regenerated the model classes you `Image` will have a relation to the _Content Elements_ (`gjContentElement`) which are loosely coupled to it. No extra fields will be added.
 
- Now that you have prepared your Models you can generate a new admin module for your Page objects.
+Then you implement a _slideshow_ component in your "gallery" module that expects a number of images to be displayed in a loop (i.e. using a jQuery plugin). Configure it like this.
 
-    $ php symfony doctrine:generate-adminn --theme=composition --module=composition frontend Page
+    all:
+      gjPositionsPlugin:
+        design_elements:
+          slideshow:
+            description:      "Shows a slideshow of manually assigned images"
+            applies_to:       [ Homepage ]
+            include:          [ gallery, slideshow ]
+            accept:           [ Image ]
+            params:           ~
 
-Now you have a new admin modules with composition features.
+Now in your component and partial template you can access the list of all assigned content elements.
 
-## TODO
+    // in your component
+    ...
+    foreach($this->contents as $content)
+    {
+      ...
+    }
+    ...
 
-* write more documentation
+    // in your partial
+    ...
+    <?php foreach($contents as $content): ?>
+      ...
+    <?php endforeach; ?>
+    ...
+
+Each content will be of type `gjContentElement` on which the original content (in this case an `Image` object) is available throught the `getObject()` method. So you can do the following.
+
+    // in your partial
+    ...
+    <?php foreach($contents as $content): ?>
+      <?php $image = $content->getObject(); ?>
+      <?php echo image_tag($image->file, array('title' => $image->title)); ?>
+    <?php endforeach; ?>
+    ...
+
+## TODOs
+
+* optimize javascript
+* implement limitation to accept only configured content elements
+* show drop areas only when not empty or when something appropriate is dragged
+* find more usable solution for design element parameters
+
