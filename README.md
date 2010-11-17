@@ -113,7 +113,7 @@ If you want to provide a little business logic you may prefer a component. Here 
 
 _The other settings will be explained further on._
 
-### 4. Generate you admin module using the _composition theme_
+### 4. Generate your admin module using the _composition theme_
 
 You simply generate an admin module for your `Homepage` model with the symfony/doctrine admin generator.
 
