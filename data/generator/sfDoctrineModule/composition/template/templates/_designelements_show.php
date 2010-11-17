@@ -1,10 +1,11 @@
+[?php use_helper('gjPositions') ?]
       <div class="design-elements-head"[?php if($is_real): ?] style="display:none;"[?php endif;?]>
         <strong>[?php echo sfInflector::humanize($name); ?]</strong><br />
         <p>[?php echo $config['description'] ?]</p>
       </div>
       <div class="design-element-include" id="inc_[?php echo $name; ?]"[?php if(!$is_real): ?] style="display:none;"[?php endif;?]>
         <div>
-          [?php is_string($config['include']) ? include_partial($config['include'], array('params' => $params)) : include_component($config['include'][0], $config['include'][1], array('params' => $params)); ?]
+          [?php include_design_element($designElement); ?]
         </div>
       </div>
       <div class="design-element-form" id="form_[?php echo $name; ?]"[?php if(!$is_real): ?] style="display:none;"[?php endif;?]>

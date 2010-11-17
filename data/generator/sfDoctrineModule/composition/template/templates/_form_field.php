@@ -15,7 +15,7 @@
           <li>
             [?php $elementName = $embeddedField['name']->getValue() ?]
             [?php $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array()) ?]
-            [?php include_partial('<?php echo $this->getModuleName() ?>/designelements_show', array('name' => $elementName, 'config' => $config[$elementName], 'form' => $embeddedField, 'params' => $embeddedField['params']->getValue(), 'is_real' => true)); ?]
+            [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_show', array('data' => $embeddedField->getValue(), 'form' => $embeddedField, 'is_real' => true)); ?]
           </li>
         [?php endforeach ?]
         </ol>

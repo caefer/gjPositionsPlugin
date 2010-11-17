@@ -21,21 +21,29 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
 
   public function executeDesignelements_show(sfWebRequest $request)
   {
-    $designElement = new gjDesignElement();
-    $designElement->name = $this->name;
-    $designElement->obj_type = $this->obj_type;
-
-    $this->params = array();
-    if(!empty($this->config['params']))
+    if(!isset($this->data))
     {
-      foreach($this->config['params'] as $key => $value)
+      $this->data = array(
+        'name'     => $this->name,
+        'obj_type' => $this->obj_type,
+        'params'   => array()
+      );
+      if(!empty($this->config['params']))
       {
-        $this->params[$key] = $value['default'];
+        foreach($this->config['params'] as $key => $value)
+        {
+          $this->data['params'][$key] = $value['default'];
+        }
       }
     }
+    $this->designElement = new gjDesignElement();
+    $this->designElement->fromArray($this->data);
 
-    $this->form = new gjDesignElementPositionsForm($designElement, array(), false);
-    $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[design_elements][x][%s]');
+    if(!isset($this->form))
+    {
+      $this->form = new gjDesignElementPositionsForm($this->designElement, array(), false);
+      $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[design_elements][x][%s]');
+    }
   }
 
   public function executeContentelements_list(sfWebRequest $request)
