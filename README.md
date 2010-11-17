@@ -24,7 +24,6 @@ This plugin depends on my fork of sfDoctrineDynamicFormRelationsPlugin which is 
 
 Then edit your ProjectConfiguration class and enable the plugins.
 
-    
     <?php
 
     require_once dirname(__FILE__).'/../lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
@@ -39,6 +38,10 @@ Then edit your ProjectConfiguration class and enable the plugins.
         $this->enablePlugins('sfDoctrineDynamicFormRelationsPlugin');
       }
     }
+
+Next you need to publish the plugins assets by running the following.
+
+    $ php symfony plugin:publish-assets
 
 ## Term Definition
 
