@@ -24,6 +24,22 @@ This plugin depends on my fork of sfDoctrineDynamicFormRelationsPlugin which is 
 
 Then edit your ProjectConfiguration class and enable the plugins.
 
+    
+    <?php
+
+    require_once dirname(__FILE__).'/../lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
+    sfCoreAutoload::register();
+
+    class ProjectConfiguration extends sfProjectConfiguration
+    {
+      public function setup()
+      {
+        $this->enablePlugins('sfDoctrinePlugin');
+        $this->enablePlugins('gjPositionsPlugin');
+        $this->enablePlugins('sfDoctrineDynamicFormRelationsPlugin');
+      }
+    }
+
 ## Term Definition
 
 <dl>
