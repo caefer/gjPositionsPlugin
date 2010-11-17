@@ -229,7 +229,7 @@ Lets prepare the `Image` model first.
 
     Image:
       actAs:
-        gjContentElementable: ~
+        gjCompositionContent: ~
         title: string(255)
         file:  string(255)
         ...
