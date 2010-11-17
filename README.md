@@ -43,6 +43,10 @@ Next you need to publish the plugins assets by running the following.
 
     $ php symfony plugin:publish-assets
 
+## Additional Requirements
+
+Please note that gjPositionsPlugin requires jQuery. It was tested with jQuery version 1.4.2 (jquery-1.4.2.min.js).
+
 ## Term Definition
 
 <dl>
