@@ -1,6 +1,6 @@
 <?php
 
-class gjContentElementable extends LooselyCoupled
+class gjCompositionContent extends LooselyCoupled
 {
   public function __construct($options = array())
   {
