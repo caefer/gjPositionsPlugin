@@ -39,6 +39,10 @@ Then edit your ProjectConfiguration class and enable the plugins.
       }
     }
 
+Next you need to publish the plugins assets by running the following.
+
+    $ php symfony plugin:publish-assets
+
 ## Term Definition
 
 <dl>
