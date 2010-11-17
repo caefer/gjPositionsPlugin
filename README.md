@@ -45,9 +45,12 @@ Next you need to publish the plugins assets by running the following.
 
 ## Additional Requirements
 
-Please note that gjPositionsPlugin requires jQuery. It was tested with jQuery version 1.4.2 (jquery-1.4.2.min.js).
+Please note that gjPositionsPlugin requires jQuery and jQuery UI. It was tested with jQuery version 1.4.2 (jquery-1.4.2.min.js) and jQuery UI version 1.8.6 (jquery-ui-1.8.6.min.js).
 
-jQuery is expected to be located at `/web/js/jquery.js`. If you choose a different location you will have to change the `view.yml` of the admin module you generate for composition.
+* jQuery is expected to be located at `/web/js/jquery.js`.
+* jQuery UI is expected to be located at `/web/js/jquery-ui.js`.
+
+If you choose different locations you will have to change the `view.yml` of the composition admin module.
 
 ## Term Definition
 
