@@ -278,3 +278,33 @@ Each content will be of type `gjContentElement` on which the original content (i
     <?php endforeach; ?>
     ...
 
+### 4. Optimizing Performance of the Admin Module
+
+When you created your admin module symfony added an sfDoctrineRouteCollection to your applications `routing.yml` like this.
+
+    homepage:
+      class: sfDoctrineRouteCollection
+      options:
+        model:                Homepage
+        module:               homepage
+        prefix_path:          /homepage
+        column:               id
+        with_wildcard_routes: true
+
+As the composition admin module will contain a lot of informations it will issue a lot of queries to your database because all relations are by default lazy loaded which will happen for each and every iteration on the page.
+
+To reduce the number of queries to a minimum you simply have to add two more lines to the above route definition so it looks like this.
+
+    homepage:
+      class: sfDoctrineRouteCollection
+      options:
+        model:                Homepage
+        module:               homepage
+        prefix_path:          /homepage
+        column:               id
+        with_wildcard_routes: true
+        model_methods:
+          object:             getObject
+
+This will add all appropriate `left joins` to the queries which will in effect avoid a lot of similar queries.
+
