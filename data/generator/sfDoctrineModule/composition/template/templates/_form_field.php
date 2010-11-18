@@ -13,9 +13,7 @@
         <ol class="positions_container">
         [?php foreach ($form[$name] as $embeddedName => $embeddedField): ?]
           <li>
-            [?php $elementName = $embeddedField['name']->getValue() ?]
-            [?php $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array()) ?]
-            [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_show', array('data' => $embeddedField->getValue(), 'form' => $embeddedField, 'is_real' => true)); ?]
+            [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_show', array('designElement' => $form->getObject()->get('DesignElements')->get($embeddedName), 'form' => $embeddedField)); ?]
           </li>
         [?php endforeach ?]
         </ol>

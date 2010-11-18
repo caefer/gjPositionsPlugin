@@ -21,26 +21,24 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
 
   public function executeDesignelements_show(sfWebRequest $request)
   {
-    if(!isset($this->data))
+    $this->is_real = true;
+
+    if(!$this->designElement instanceof gjDesignElement)
     {
-      $this->data = array(
-        'name'     => $this->name,
-        'obj_type' => $this->obj_type,
-        'params'   => array()
-      );
+      $this->is_real = false;
+
+      $designElement = Doctrine_Core::getTable('gjDesignElement')->create($this->designElement);
       if(!empty($this->config['params']))
       {
+        $params = array();
         foreach($this->config['params'] as $key => $value)
         {
-          $this->data['params'][$key] = $value['default'];
+          $params[$key] = $value['default'];
         }
+        $designElement['params'] = $params;
       }
-    }
-    $this->designElement = new gjDesignElement();
-    $this->designElement->fromArray($this->data);
+      $this->designElement = $designElement;
 
-    if(!isset($this->form))
-    {
       $this->form = new gjDesignElementPositionsForm($this->designElement, array(), false);
       $this->form->getWidgetSchema()->setNameFormat('<?php echo $this->getSingularName(); ?>[design_elements][x][%s]');
     }
