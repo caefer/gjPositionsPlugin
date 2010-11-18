@@ -278,10 +278,3 @@ Each content will be of type `gjContentElement` on which the original content (i
     <?php endforeach; ?>
     ...
 
-## TODOs
-
-* optimize javascript
-* implement limitation to accept only configured content elements
-* show drop areas only when not empty or when something appropriate is dragged
-* find more usable solution for design element parameters
-
