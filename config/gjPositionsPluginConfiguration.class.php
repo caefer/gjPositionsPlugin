@@ -20,7 +20,7 @@ class gjPositionsPluginConfiguration extends sfPluginConfiguration
   public function initialize()
   {
     // register a listener on the doctrine.configure event
-    $this->dispatcher->connect('doctrine.configure', array($this, 'configureDoctrine'));
+    $this->dispatcher->connect('doctrine.configure_connection', array($this, 'configureDoctrine'));
   }
 
   /**
