@@ -12,4 +12,25 @@
  */
 abstract class PlugingjDesignElement extends BasegjDesignElement
 {
+  public function setup()
+  {
+    parent::setup();
+    $this->unshiftFilter(new gjDesignElementConfigFilter());
+  }
+
+  public function setName($name)
+  {
+    $this->_set('name', $name, true);
+    $this->getAttributesFromConfig();
+  }
+
+  protected function getAttributesFromConfig()
+  {
+    $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+    $config = $config[$this['name']];
+    foreach($config as $key => $value)
+    {
+      $this->attribute($key, $value);
+    }
+  }
 }

@@ -13,13 +13,13 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
 {
   protected $modelClasses = array();
 
-  public function executeDesignelements_list(sfWebRequest $request)
+  public function executeComposition_designelements(sfWebRequest $request)
   {
     $elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
     $this->elements = array_filter($elements, array($this, 'filterAppropriate'));
   }
 
-  public function executeDesignelements_show(sfWebRequest $request)
+  public function executeComposition_designelement(sfWebRequest $request)
   {
     $this->is_real = true;
 
@@ -44,7 +44,7 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends s
     }
   }
 
-  public function executeContentelements_list(sfWebRequest $request)
+  public function executeComposition_contentelements(sfWebRequest $request)
   {
     $elements = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
     $this->elements = array_filter($elements, array($this, 'filterAppropriate'));

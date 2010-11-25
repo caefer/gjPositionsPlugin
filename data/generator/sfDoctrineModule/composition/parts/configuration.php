@@ -24,10 +24,8 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfigu
    */
   public function getForm($object = null, $options = array())
   {
-    sfWidgetFormSchema::setDefaultFormFormatterName('positions');
     $form = parent::getForm($object, $options);
     $form->embedDynamicRelation('DesignElements', 'gjDesignElementPositionsForm');
-    $form->getWidgetSchema()->setFormFormatterName('positions');
     $form->getValidator('design_elements')->setOption('allow_extra_fields', true);
     return $form;
   }

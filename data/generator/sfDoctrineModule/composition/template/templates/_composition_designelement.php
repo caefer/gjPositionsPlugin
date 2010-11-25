@@ -9,5 +9,10 @@
         </div>
       </div>
       <div class="design-element-form" id="form_[?php echo $designElement['name']; ?]"[?php if(!$is_real): ?] style="display:none;"[?php endif;?]>
-        [?php if(isset($form)) echo $form; ?]
+        [?php if($accept = $designElement['config']['accept']): ?]
+        <ol class="design-element-canvas [?php echo implode(' ', $accept->getRawValue()) ?]">
+          [?php echo $form['contents']->render(); ?]
+        </ol>
+        [?php endif; ?]
+        [?php echo $form->renderHiddenFields(); ?]
       </div>

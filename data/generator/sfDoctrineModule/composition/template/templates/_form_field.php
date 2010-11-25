@@ -10,13 +10,7 @@
 
       <div class="content">
       [?php if('design_elements' == $name && 'sfFormFieldSchema' == get_class($form[$name])): ?]
-        <ol class="positions_container">
-        [?php foreach ($form[$name] as $embeddedName => $embeddedField): ?]
-          <li>
-            [?php include_component('<?php echo $this->getModuleName() ?>', 'designelements_show', array('designElement' => $form->getObject()->get('DesignElements')->get($embeddedName), 'form' => $embeddedField)); ?]
-          </li>
-        [?php endforeach ?]
-        </ol>
+        [?php include_partial('<?php echo $this->getModuleName() ?>/composition_canvas', array('form' => $form, 'name' => $name)) ?]
       [?php else: ?]
         [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
       [?php endif; ?]
