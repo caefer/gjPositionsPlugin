@@ -19,9 +19,5 @@ class gjContentElementPositionsForm extends PlugingjContentElementForm
     $this->widgetSchema['obj_pk']   = new sfWidgetFormInputHidden();
 
     $this->useFields(array($this->getObject()->obj_type, 'position', 'obj_type', 'obj_pk'));
-
-    // use a custom formatter
-    $this->getWidgetSchema()->addFormFormatter('content_element', new gjWidgetFormSchemaFormatterContentElement($this->getWidgetSchema()));
-    $this->widgetSchema->setFormFormatterName('content_element');
   }
 }
