@@ -3,9 +3,9 @@
 /**
  * PlugingjContentElement form.
  *
- * @package    ##PROJECT_NAME##
+ * @package     gjPositionsPlugin
  * @subpackage filter
- * @author     ##AUTHOR_NAME##
+ * @author      Christian Schaefer <caefer@ical.ly>
  * @version    SVN: $Id: sfDoctrineFormFilterPluginTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 abstract class PlugingjContentElementFormFilter extends BasegjContentElementFormFilter

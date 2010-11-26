@@ -3,9 +3,9 @@
 /**
  * <?php echo $this->getModuleName() ?> module configuration.
  *
- * @package    ##PROJECT_NAME##
+ * @package     gjPositionsPlugin
  * @subpackage <?php echo $this->getModuleName()."\n" ?>
- * @author     ##AUTHOR_NAME##
+ * @author      Christian Schaefer <caefer@ical.ly>
  * @version    SVN: $Id: helper.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
 abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends sfModelGeneratorHelper

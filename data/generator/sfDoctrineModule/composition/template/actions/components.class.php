@@ -4,9 +4,9 @@
 /**
  * <?php echo $this->getModuleName() ?> components.
  *
- * @package    ##PROJECT_NAME##
+ * @package     gjPositionsPlugin
  * @subpackage <?php echo $this->getModuleName()."\n" ?>
- * @author     ##AUTHOR_NAME##
+ * @author      Christian Schaefer <caefer@ical.ly>
  * @version    SVN: $Id: actions.class.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
 abstract class <?php echo $this->getGeneratedModuleName() ?>Components extends sfComponents
