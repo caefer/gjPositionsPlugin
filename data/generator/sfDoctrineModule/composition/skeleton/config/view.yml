@@ -1,3 +1,0 @@
-default:
-  stylesheets: [ /gjPositionsPlugin/css/positions ]
-  javascripts: [ jquery, jquery-ui, /gjPositionsPlugin/js/positions ]

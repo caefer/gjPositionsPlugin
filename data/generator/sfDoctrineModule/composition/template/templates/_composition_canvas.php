@@ -1,3 +1,6 @@
+[?php use_javascript('/gjPositionsPlugin/js/jquery.compositionCanvas.js') ?]
+[?php use_javascript('/gjPositionsPlugin/js/jquery.compositionDesignElement.js') ?]
+[?php use_javascript('/gjPositionsPlugin/js/positions.js') ?]
         <ol class="composition-canvas">
         [?php foreach ($form[$name] as $embeddedName => $embeddedField): ?]
           <li class="design-element">
