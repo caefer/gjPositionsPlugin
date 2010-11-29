@@ -5,7 +5,7 @@
     {
       var options = $.extend({}, $.composition.defaults, options);
 
-      $(this).sortable($.extend({}, options.sortableOptions, {receive: addContent}));
+      $(this).sortable($.extend({ receive: addContent, update: updatePositions }, options.sortableOptions));
 
       $('.content-elements > li').draggable($.extend({
         connectToSortable:'.design-element-canvas',
@@ -20,6 +20,13 @@
   function addContent(event, ui)
   {
     $(event.target).children('li:not(content-element)').addClass('content-element');
+  }
+
+  function updatePositions()
+  {
+    $('.composition-canvas .content-element').each(function(i, element){
+      $(element).find('input[id$=position]').val(i);
+    });
   }
 
   function showContainer(event, ui)
