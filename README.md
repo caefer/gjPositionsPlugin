@@ -47,8 +47,6 @@ Next you need to publish the plugins assets by running the following.
 
 Please note that gjPositionsPlugin requires jQuery and jQuery UI. It was tested with jQuery version 1.4.2 (jquery-1.4.2.min.js) and jQuery UI version 1.8.6 (jquery-ui-1.8.6.min.js). Both files have to be loaded for the admin module to work!
 
-If you choose different locations you will have to change the `view.yml` of the composition admin module.
-
 ## Term Definition
 
 <dl>
