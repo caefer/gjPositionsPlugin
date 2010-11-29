@@ -35,6 +35,12 @@
   list-style-type: none
 }
 
+#design_element_source_list > li:hover,
+#content_element_source_list > li:hover
+{
+  cursor: move;
+}
+
 .design-element,
 .content-element
 {
@@ -45,6 +51,7 @@
 .design-element
 {
   background:  #FFFFFF;
+  cursor: n-resize;
   border: 1px dotted #888888;
   padding-bottom: 5px;
 }
@@ -52,7 +59,7 @@
 .content-element
 {
   background:  #F8F8F8;
+  cursor: n-resize;
   border: 2px solid #FFFFFF;
   list-style-position: inside;
 }
-
