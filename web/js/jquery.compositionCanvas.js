@@ -25,7 +25,11 @@ $.composition = {
       $(this).sortable($.extend({ receive: designElementify }, options.sortableOptions));
       designElementify();
 
-      $('#design_element_source_list > li').draggable($.extend({connectToSortable:'.composition-canvas'}, options.draggableOptions));
+      $('#design_element_source_list > li').draggable($.extend({
+        connectToSortable:'.composition-canvas',
+        start: showContainer,
+        stop: hideContainer
+      }, options.draggableOptions));
 
       return this;
     }
@@ -33,9 +37,24 @@ $.composition = {
 
   function designElementify(event, ui)
   {
-    $('.content .design-element-head').hide();
-    $('.content .design-element-include, .content .design-element-form').show();
+    if(event)
+    {
+      var canvas = $(event.target);
+      canvas.find('.design-element-head').hide();
+      canvas.find('.design-element-include').show();
+      canvas.find('.design-element-form').show();
+    }
 
-    $('.design-element-canvas:not(.ui-sortable)').compositionDesignElement();
+    $('.design-element-canvas').compositionDesignElement();
+  }
+
+  function showContainer(event, ui)
+  {
+    $('.composition-canvas').addClass('open');
+  }
+
+  function hideContainer(event, ui)
+  {
+    $('.composition-canvas').removeClass('open');
   }
 })(jQuery);
