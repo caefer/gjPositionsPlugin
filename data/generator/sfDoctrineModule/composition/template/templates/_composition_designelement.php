@@ -24,5 +24,6 @@
             [?php endforeach; ?]
           [?php endforeach; ?]</ol>
         [?php endif; ?]
+        [?php echo $form['params']->render(); ?]
         [?php echo $form->renderHiddenFields(false); ?]
       </div>

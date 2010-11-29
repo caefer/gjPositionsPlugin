@@ -5,7 +5,7 @@
     {
       var options = $.extend({}, $.composition.defaults, options);
 
-      $(this).sortable($.extend({ receive: addContent, update: updatePositions }, options.sortableOptions));
+      $(this).sortable($.extend({ receive: updateContentElement, update: updatePositions }, options.sortableOptions));
 
       $('.content-elements > li').draggable($.extend({
         connectToSortable:'.design-element-canvas',
@@ -17,9 +17,21 @@
     }
   });
 
-  function addContent(event, ui)
+  function updateContentElement(event, ui)
   {
+    if(event)
+    {
+      var design_element_number = $(event.target).parents('.design-element').find('.design-element-form > input[id$=_id]').attr('id').replace(/^.*_(\d*)_.*$/, '$1');
+      var content_element_number = $(event.target).find('.content-element').length;
+
+      $(event.target).find('input,select,textarea').each(function(i, element){
+        element = $(element);
+        element.attr('name', element.attr('name').replace(/\[x\]/, '['+design_element_number+']').replace(/\[y\]/, '['+content_element_number+']'));
+      });
+    }
+
     $(event.target).children('li:not(content-element)').addClass('content-element');
+    updatePositions();
   }
 
   function updatePositions()

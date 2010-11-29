@@ -1,3 +1,4 @@
+[?php use_stylesheet('/gjPositionsPlugin/css/positions.css') ?]
 [?php use_javascript('/gjPositionsPlugin/js/jquery.compositionCanvas.js') ?]
 [?php use_javascript('/gjPositionsPlugin/js/jquery.compositionDesignElement.js') ?]
 [?php use_javascript('/gjPositionsPlugin/js/positions.js') ?]

@@ -17,6 +17,7 @@
 {
   border: 1px dotted #888888;
   list-style-position: inside;
+  margin-bottom: 3px;
 }
 
 .composition-canvas.open,
@@ -62,4 +63,23 @@
   cursor: n-resize;
   border: 2px solid #FFFFFF;
   list-style-position: inside;
+}
+
+#sf_admin_container fieldset.design-element-params
+{
+  background: #CCCCCC;
+  padding: 2px 2px 4px;
+}
+
+#sf_admin_container fieldset.design-element-params label
+{
+  position: absolute;
+  width: 90px;
+}
+
+#sf_admin_container fieldset.design-element-params input,
+#sf_admin_container fieldset.design-element-params textarea,
+#sf_admin_container fieldset.design-element-params select
+{
+  margin-left: 100px;
 }
