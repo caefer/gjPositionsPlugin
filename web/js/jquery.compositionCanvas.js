@@ -31,6 +31,8 @@ $.composition = {
         stop: hideContainer
       }, options.draggableOptions));
 
+      $('.composition-canvas:empty').addClass('open');
+
       return this;
     }
   });
