@@ -305,3 +305,63 @@ To reduce the number of queries to a minimum you simply have to add two more lin
 
 This will add all appropriate `left joins` to the queries which will in effect avoid a lot of similar queries.
 
+### 5. Enabling composition in an already existing admin module
+
+When introducing gjPositionsPlugin to an existing project chances are that you are not able to regenerate your admin modules as you have already made some modifications to it. So instead there needs to be a way to adapt this functionality without loosing your old work.
+
+You can do this in three simple steps.
+
+#### 1. Create a Components Class
+
+In your admin module you have to create the file `components.class.php` just next to your `actions.class.php` in the `actions` folder.
+
+    <?php
+    
+    require_once sfConfig::get('sf_module_cache_dir').'/auto'.ucfirst('demo_page').'/actions/components.class.php';
+    
+    /**
+     * demo_page components.
+     *
+     * @package    positionsdemo
+     * @subpackage demo_page
+     * @author     Your name here
+     * @version    SVN: $Id: components.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+     */
+    class demo_pageComponents extends autoDemo_pageComponents
+    {
+    }
+
+> The above assumes the name `demo_page` for your module and you have to replace it with the real name.
+
+#### 2. Configure the Theme
+
+Open your `generator.yml` and change the `theme` to "_composition_".
+
+    generator:
+      class: sfDoctrineGenerator
+      param:
+        model_class:           DemoPage
+        theme:                 composition
+        non_verbose_templates: true
+        with_show:             false
+        singular:              ~
+        plural:                ~
+        route_prefix:          demo_page
+        with_doctrine_route:   true
+        actions_base_class:    sfActions
+    
+        config:
+          actions: ~
+          fields:  ~
+          list:    ~
+          filter:  ~
+          form:    ~
+          edit:    ~
+          new:     ~
+
+#### 3. Clear the Cache
+
+Now what's left is to clear the cache in order for the admin generator to generate the module from scratch in your cache directory.
+
+    $ php symfony cc
+
