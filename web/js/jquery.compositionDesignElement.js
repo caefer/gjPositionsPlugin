@@ -31,13 +31,12 @@
     }
 
     $(event.target).children('li:not(content-element)').addClass('content-element');
-    updatePositions();
   }
 
-  function updatePositions()
+  function updatePositions(event, ui)
   {
-    $('.composition-canvas .content-element').each(function(i, element){
-      $(element).find('input[id$=position]').val(i);
+    $(event.target).find('.content-element input[name$=position]]').each(function(i, element){
+      $(element).val(i);
     });
   }
 
