@@ -1,23 +1,58 @@
-@import url('/gjPositionsPlugin/css/design_elements.css');
-@import url('/gjPositionsPlugin/css/content_elements.css');
+.composition-canvas,
+.design-element-canvas
+{
+  background:  #EEEEEE;
+}
 
-.content > .positions_container
+.composition-canvas,
+#design_element_source_list,
+#content_element_source_list,
+.design-element-canvas
 {
   margin: 0;
-  min-height:40px;
-  border:1px dotted #EEEEEE;
+  padding: 3px 0;
 }
 
-.content > .positions_container > li
+.design-element-canvas
 {
-  border:1px solid #AAAAAA;
-  list-style-type:none;
-  margin:5px 0;
-  padding: 0;
+  border: 1px dotted #888888;
+  list-style-position: inside;
 }
 
-.content .design-element-form .positions_container
+.composition-canvas.open,
+.design-element-canvas.open
 {
-  min-height:40px;
-  border:1px dotted #EEEEEE;
+  border: 1px dotted #AAFF88;
+  background: url(/gjPositionsPlugin/images/drop-here.png) center center no-repeat;
+  background-color: #DDFFCC;
+  min-height: 1em;
 }
+
+.composition-canvas > li,
+#design_element_source_list > li,
+#content_element_source_list > li
+{
+  list-style-type: none
+}
+
+.design-element,
+.content-element
+{
+  margin: 2px 0;
+  padding: 2px;
+}
+
+.design-element
+{
+  background:  #FFFFFF;
+  border: 1px dotted #888888;
+  padding-bottom: 5px;
+}
+
+.content-element
+{
+  background:  #F8F8F8;
+  border: 2px solid #FFFFFF;
+  list-style-position: inside;
+}
+
