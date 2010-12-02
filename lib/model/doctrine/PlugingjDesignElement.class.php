@@ -17,4 +17,15 @@ abstract class PlugingjDesignElement extends BasegjDesignElement
     parent::setup();
     $this->unshiftFilter(new gjDesignElementConfigFilter());
   }
+
+  public function postHydrate($event)
+  {
+    $record = $event->data;
+    if(is_array($record) && $record['name'])
+    {
+      $config = sfConfig::get('app_gjPositionsPlugin_design_elements', array());
+      $record['config'] = $config[$record['name']];
+      $event->data = $record;
+    }
+  }
 }
