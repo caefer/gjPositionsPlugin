@@ -50,11 +50,6 @@ $.composition = {
       canvas.find('.design-element-head').hide();
       canvas.find('.design-element-include').show();
       canvas.find('.design-element-form').show();
-      current.find('input,select,textarea').each(function(i, element){
-        element = $(element);
-        element.attr('id', element.attr('id').replace(/_x_/, '_'+design_element_count+'_'));
-        element.attr('name', element.attr('name').replace(/\[x\]/, '['+design_element_count+']'));
-      });
       design_element_count += 1;
     }
 
@@ -66,6 +61,11 @@ $.composition = {
   {
     $('.composition-canvas .design-element').each(function(i, element){
       $(element).find('.design-element-form').children('input[id$=position]').val(i);
+      $(element).find('input,select,textarea').each(function(j, _element){
+        _element = $(_element);
+        _element.attr('id', _element.attr('id').replace(/_x_/, '_'+i+'_'));
+        _element.attr('name', _element.attr('name').replace(/\[x\]/, '['+i+']'));
+      });
     });
   }
 
