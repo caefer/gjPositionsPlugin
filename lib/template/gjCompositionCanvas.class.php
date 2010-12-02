@@ -1,10 +1,13 @@
 <?php
 
-class gjCompositionCanvas extends LooselyCoupled
+class gjCompositionCanvas extends Doctrine_Template
 {
-  public function __construct($options = array())
+  public function setUp()
   {
-    parent::__construct(array('DesignElements' => 'gjDesignElement'));
+    parent::setUp();
+
+    $looselycoupled = new LooselyCoupled(array('DesignElements' => 'gjDesignElement'));
+    $this->getInvoker()->actAs($looselycoupled);
   }
 
   public function getObjectTableProxy(array $params)

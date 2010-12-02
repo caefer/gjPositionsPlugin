@@ -1,9 +1,12 @@
 <?php
 
-class gjCompositionContent extends LooselyCoupled
+class gjCompositionContent extends Doctrine_Template
 {
-  public function __construct($options = array())
+  public function setUp()
   {
-    parent::__construct(array('ContentElement' => 'gjContentElement'));
+    parent::setUp();
+
+    $looselycoupled = new LooselyCoupled(array('ContentElement' => 'gjContentElement'));
+    $this->getInvoker()->actAs($looselycoupled);
   }
 }
