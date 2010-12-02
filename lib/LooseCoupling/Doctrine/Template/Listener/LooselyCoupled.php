@@ -66,7 +66,7 @@ class LooselyCoupledListener extends Doctrine_Record_Listener
       {
         foreach ($event->getInvoker()->getTable()->getRelations() as $relation)
         {
-          if ($component['table'] == $relation->getTable())
+          if ($component['table'] == $relation->getTable() && $relation->getTable()->hasTemplate('LooselyCoupleable'))
           {
             $query->addPendingJoinCondition($alias, $alias.'.obj_type = "'.$rootComponentName.'"');
             continue;
