@@ -9,7 +9,7 @@ function get_design_element($designElement)
 {
   $options = array(
     'params'   => $designElement['params'],
-    'subject'  => $designElement->getObject(),
+    'subject'  => $designElement['Object'],
     'contents' => $designElement['Contents']
   );
 
