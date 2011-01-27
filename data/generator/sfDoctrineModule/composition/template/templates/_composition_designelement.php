@@ -17,6 +17,7 @@
                 [?php if(!$field->isHidden()): ?]
                   [?php echo $field->renderLabel(); ?]
                   [?php echo $field->render(); ?]
+                  <br />
                 [?php endif; ?]
               [?php endforeach; ?]
               [?php echo $content->renderHiddenFields(); ?]

@@ -30,6 +30,7 @@
       });
     }
 
+    $('.composition-canvas .content-element-override').show();
     $(event.target).children('li:not(content-element)').addClass('content-element');
   }
 
