@@ -4,6 +4,7 @@ gjContentElement:
   columns:
     position:             integer
     gj_design_element_id: integer
+    override:             array(1000)
   relations:
     DesignElement:
       class:              gjDesignElement
