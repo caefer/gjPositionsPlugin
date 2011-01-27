@@ -18,18 +18,17 @@ class gjContentElementPositionsForm extends PlugingjContentElementForm
     $this->widgetSchema['obj_type'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['obj_pk']   = new sfWidgetFormInputHidden();
 
+    $useFields = array($this->getObject()->obj_type, 'position', 'obj_type', 'obj_pk');
+
     if(($config = $this->getConfigForOverrideFields()))
     {
       $this->validatorSchema->setOption('allow_extra_fields', true);
       $this->widgetSchema['override'] = new sfWidgetFormInputArray(array('config' => $config));
       $this->widgetSchema['override']->setLabel(false);
-      $this->useFields(array($this->getObject()->obj_type, 'override', 'position', 'obj_type', 'obj_pk'));
-    }
-    else
-    {
-      $this->useFields(array($this->getObject()->obj_type, 'position', 'obj_type', 'obj_pk'));
+      $useFields[] = 'override';
     }
 
+    $this->useFields($useFields);
   }
 
   protected function getConfigForOverrideFields()
