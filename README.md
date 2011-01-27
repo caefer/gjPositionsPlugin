@@ -228,6 +228,7 @@ Lets prepare the `Image` model first.
     Image:
       actAs:
         gjCompositionContent: ~
+      columns:
         title: string(255)
         file:  string(255)
         ...
@@ -362,4 +363,44 @@ Open your `generator.yml` and change the `theme` to "_composition_".
 Now what's left is to clear the cache in order for the admin generator to generate the module from scratch in your cache directory.
 
     $ php symfony cc
+
+### 6. Overriding values of a content per placement (content element)
+
+This plugin helps you i.e. to place articles (as a _Content Element_)on a homepage together with other _Design Elements_.
+Sometimes it may be useful to be able to overload specific fields of an article.
+
+For SEO reasons it is often required for articles to show up with a different headline on an overview page that they have on their detail page.
+
+Imagine the following schema:
+
+    Article:
+      actAs:
+        gjCompositionContent: ~
+      columns:
+        title: string(255)
+        text:  string(10000)
+        ...
+
+To be able to override the `title` field individually for each "placement" you can extend the above schema like the following:
+
+    Article:
+      actAs:
+        gjCompositionContent:
+          override: [ title ]
+      columns:
+        title: string(255)
+        text:  string(10000)
+        ...
+
+By passing the `override` option to the `gjCompositionContent` behaviour you can specify an array of fieldnames you want to be able to override.
+
+Now each _Content Element_ holding an `Article` will present an input field in your admin module.
+
+In your template displaying the `title` you can now define a fallback mechanism like this:
+
+    ...
+    <?php echo $content['override']['title'] ? $content['override']['title'] : $content['Object']['title'] ?>
+    ...
+
+This will prefer the overriden over the original title. If no override was specified then the original will be displayed.
 
