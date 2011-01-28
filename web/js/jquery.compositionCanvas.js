@@ -58,20 +58,31 @@ $.composition = {
 
   function updatePositions()
   {
-    increment = 0;
     $('.composition-canvas .design-element').each(function(i, element){
       $(element).find('.design-element-form').children('input[id$=position]').val(i);
       $(element).find('input,select,textarea').each(function(j, _element){
         _element = $(_element);
         if(/_x_/.test(_element.attr('id')))
         {
-          increment = 1;
-          _element.attr('id', _element.attr('id').replace(/_x_/, '_'+design_element_count+'_'));
-          _element.attr('name', _element.attr('name').replace(/\[x\]/, '['+design_element_count+']'));
+          var index = nextAvailableIndex();
+          _element.attr('id', _element.attr('id').replace(/_x_/, '_'+index+'_'));
+          _element.attr('name', _element.attr('name').replace(/\[x\]/, '['+index+']'));
         }
       });
-      design_element_count += increment;
     });
+  }
+
+  var design_element_index = 0;
+  function nextAvailableIndex()
+  {
+    var selector = 'input[id$=design_elements_'+design_element_index+'_id]';
+    while($(selector).length)
+    {
+      design_element_index++;
+       selector = 'input[id$=design_elements_'+design_element_index+'_id]';
+       console.log(selector);
+    }
+    return design_element_index;
   }
 
   function designElementify()
