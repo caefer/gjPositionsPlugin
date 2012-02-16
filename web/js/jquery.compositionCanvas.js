@@ -38,7 +38,11 @@ $.composition = {
       design_element_count = $('.composition-canvas > li').length;
       
       $('.design-element-include a[rel="remove-design-element"]').bind('click', function(){
-        $(this).parents('li.design-element').remove(); 
+        console.log($(this).attr('data-confirm'));
+        if(confirm($(this).attr('data-confirm'))){
+          $(this).parents('li.design-element').remove(); 
+        }
+        
         return false;
       });
       return this;
