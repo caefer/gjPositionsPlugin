@@ -4,6 +4,7 @@
         <p>[?php echo $config['description'] ?]</p>
       </div>
       <div class="design-element-include" [?php if(!$is_real): ?] style="display:none;"[?php endif;?]>
+        <a href="#" rel="remove-design-element" />Remove</a>
         <div>
           [?php include_design_element($designElement); ?]
         </div>
