@@ -36,7 +36,15 @@ $.composition = {
 
       $('.composition-canvas:empty').addClass('open');
       design_element_count = $('.composition-canvas > li').length;
-
+      
+      $('.design-element-include a[rel="remove-design-element"]').bind('click', function(){
+        console.log($(this).attr('data-confirm'));
+        if(confirm($(this).attr('data-confirm'))){
+          $(this).parents('li.design-element').remove(); 
+        }
+        
+        return false;
+      });
       return this;
     }
   });

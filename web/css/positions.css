@@ -83,3 +83,13 @@
 {
   margin-left: 100px;
 }
+
+li.design-element a.button
+{
+    float: right;
+}
+li.design-element a.remove
+{
+  background: url(../../sfAdminDashPlugin/images/delete.png) no-repeat 0 2px;
+  padding-left: 15px;
+}
